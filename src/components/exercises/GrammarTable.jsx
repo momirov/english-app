@@ -38,7 +38,10 @@ export default function GrammarTable({ exercise, onAnswer }) {
             const isCorrect = answers[i].trim().toLowerCase() === row.answer.toLowerCase();
             return (
               <tr key={i}>
-                <td className="gt-prompt">{row.prompt}</td>
+                <td className="gt-prompt">
+                  {row.prompt}
+                  {row.verb && <span className="gt-verb-hint"> ({row.verb})</span>}
+                </td>
                 <td>
                   <input
                     type="text"

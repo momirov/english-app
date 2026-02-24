@@ -400,6 +400,12 @@
   color: #495057;
 }
 
+.gt-verb-hint {
+  font-weight: 400;
+  color: #6c757d;
+  font-style: italic;
+}
+
 .gt-input {
   border: 1.5px solid #ced4da;
   border-radius: 6px;

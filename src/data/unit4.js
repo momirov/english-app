@@ -187,9 +187,9 @@ export const unit4 = {
           type: 'grammar-table',
           title: 'Present continuous: negative (am/is/are + not + -ing)',
           rows: [
-            { prompt: "I'm not", answer: 'sleeping' },
-            { prompt: "He / She / It isn't", answer: 'eating' },
-            { prompt: "You / We / They aren't", answer: 'playing' },
+            { prompt: "I'm not", verb: 'sleep', answer: 'sleeping' },
+            { prompt: "He / She / It isn't", verb: 'eat', answer: 'eating' },
+            { prompt: "You / We / They aren't", verb: 'play', answer: 'playing' },
           ],
         },
         {
@@ -213,7 +213,7 @@ export const unit4 = {
         {
           type: 'multiple-choice',
           question: 'What is the -ing form of "sit"?',
-          options: ['siting', 'sitting', 'sittting', 'siting'],
+          options: ['siting', 'sitting', 'sittting', 'siteing'],
           answer: 'sitting',
         },
         {
