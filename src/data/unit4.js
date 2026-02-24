@@ -1,0 +1,338 @@
+export const unit4 = {
+  id: 'unit4',
+  number: 4,
+  title: 'Learning world',
+  color: '#c0392b',
+  lessons: [
+    {
+      id: 'unit4-vocab1',
+      type: 'vocabulary',
+      title: 'School subjects',
+      canDo: 'I can talk about school subjects and say which I like.',
+      exercises: [
+        {
+          type: 'flashcard',
+          cards: [
+            { front: 'maths', back: 'the study of numbers and shapes' },
+            { front: 'science', back: 'the study of the natural world' },
+            { front: 'history', back: 'the study of past events' },
+            { front: 'geography', back: 'the study of the Earth and its countries' },
+            { front: 'art', back: 'drawing, painting and making things' },
+            { front: 'music', back: 'playing instruments and singing' },
+            { front: 'PE', back: 'Physical Education — sport and exercise at school' },
+            { front: 'English', back: 'learning to read, write and speak in English' },
+          ],
+        },
+        {
+          type: 'multiple-choice',
+          question: 'In ___ class, you learn about the past.',
+          options: ['maths', 'science', 'history', 'art'],
+          answer: 'history',
+        },
+        {
+          type: 'multiple-choice',
+          question: 'In ___ class, you play sport and exercise.',
+          options: ['music', 'PE', 'geography', 'English'],
+          answer: 'PE',
+        },
+        {
+          type: 'matching',
+          pairs: [
+            { left: 'maths', right: 'numbers and shapes' },
+            { left: 'science', right: 'natural world experiments' },
+            { left: 'geography', right: 'countries and maps' },
+            { left: 'art', right: 'drawing and painting' },
+            { left: 'music', right: 'songs and instruments' },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'unit4-grammar1',
+      type: 'grammar',
+      title: 'Present continuous — affirmative',
+      canDo: 'I can use the present continuous to talk about things happening now.',
+      exercises: [
+        {
+          type: 'grammar-table',
+          title: 'Present continuous: am / is / are + verb-ing',
+          rows: [
+            { prompt: 'I', answer: 'am working' },
+            { prompt: 'He / She / It', answer: 'is working' },
+            { prompt: 'You / We / They', answer: 'are working' },
+          ],
+        },
+        {
+          type: 'fill-blank',
+          template: 'She ___ maths homework right now. (do)',
+          wordBank: ['is doing', 'does', 'do', 'are doing'],
+          answer: 'is doing',
+        },
+        {
+          type: 'fill-blank',
+          template: 'They ___ a science experiment. (conduct)',
+          wordBank: ['conducts', 'is conducting', 'are conducting', 'conducted'],
+          answer: 'are conducting',
+        },
+        {
+          type: 'fill-blank',
+          template: 'I ___ to music at the moment. (listen)',
+          wordBank: ['listen', 'listens', 'am listening', 'are listening'],
+          answer: 'am listening',
+        },
+        {
+          type: 'multiple-choice',
+          question: 'The teacher ___ on the board now.',
+          options: ['write', 'writes', 'is writing', 'are writing'],
+          answer: 'is writing',
+        },
+        {
+          type: 'multiple-choice',
+          question: 'We ___ in the library at the moment.',
+          options: ['study', 'studies', 'am studying', 'are studying'],
+          answer: 'are studying',
+        },
+        {
+          type: 'true-false',
+          statement: 'The present continuous is used to talk about habits.',
+          answer: false,
+        },
+        {
+          type: 'true-false',
+          statement: 'We use the present continuous for actions happening at the moment of speaking.',
+          answer: true,
+        },
+        {
+          type: 'word-order',
+          words: ['reading', 'is', 'a', 'book', 'she', 'now', '.'],
+          answer: ['She', 'is', 'reading', 'a', 'book', 'now', '.'],
+        },
+        {
+          type: 'word-order',
+          words: ['are', 'they', 'geography', 'studying', 'at', 'the', 'moment', '.'],
+          answer: ['They', 'are', 'studying', 'geography', 'at', 'the', 'moment', '.'],
+        },
+      ],
+    },
+    {
+      id: 'unit4-grammar2',
+      type: 'grammar',
+      title: 'Questions in the present continuous',
+      canDo: 'I can ask and answer questions using the present continuous.',
+      exercises: [
+        {
+          type: 'multiple-choice',
+          question: '___ she reading a book?',
+          options: ['Is', 'Are', 'Do', 'Does'],
+          answer: 'Is',
+        },
+        {
+          type: 'multiple-choice',
+          question: 'What ___ they doing?',
+          options: ['is', 'are', 'do', 'does'],
+          answer: 'are',
+        },
+        {
+          type: 'word-order',
+          words: ['doing', 'you', 'are', 'what', '?'],
+          answer: ['What', 'are', 'you', 'doing', '?'],
+        },
+        {
+          type: 'word-order',
+          words: ['teacher', 'is', 'the', 'now', 'what', 'doing', '?'],
+          answer: ['What', 'is', 'the', 'teacher', 'doing', 'now', '?'],
+        },
+        {
+          type: 'fill-blank',
+          template: '___ you listening to me?',
+          wordBank: ['Is', 'Are', 'Do', 'Does'],
+          answer: 'Are',
+        },
+        {
+          type: 'fill-blank',
+          template: 'Where ___ she sitting?',
+          wordBank: ['is', 'are', 'do', 'does'],
+          answer: 'is',
+        },
+        {
+          type: 'multiple-choice',
+          question: '___ your friends waiting outside?',
+          options: ['Is', 'Are', 'Do', 'Does'],
+          answer: 'Are',
+        },
+        {
+          type: 'word-order',
+          words: ['crying', 'he', 'is', 'why', '?'],
+          answer: ['Why', 'is', 'he', 'crying', '?'],
+        },
+        {
+          type: 'true-false',
+          statement: 'To make a yes/no question in present continuous, put am/is/are before the subject.',
+          answer: true,
+        },
+        {
+          type: 'true-false',
+          statement: 'We use "do" to make present continuous questions.',
+          answer: false,
+        },
+      ],
+    },
+    {
+      id: 'unit4-grammar3',
+      type: 'grammar',
+      title: 'Present continuous — negatives & spelling',
+      canDo: "I can form negative sentences and spell -ing forms correctly.",
+      exercises: [
+        {
+          type: 'grammar-table',
+          title: 'Present continuous: negative (am/is/are + not + -ing)',
+          rows: [
+            { prompt: "I'm not", answer: 'sleeping' },
+            { prompt: "He / She / It isn't", answer: 'eating' },
+            { prompt: "You / We / They aren't", answer: 'playing' },
+          ],
+        },
+        {
+          type: 'fill-blank',
+          template: 'She ___ attention in class right now.',
+          wordBank: ["isn't paying", "aren't paying", "doesn't pay", "not paying"],
+          answer: "isn't paying",
+        },
+        {
+          type: 'fill-blank',
+          template: 'They ___ lunch at the moment — they are in a lesson.',
+          wordBank: ["isn't having", "aren't having", "don't have", "not having"],
+          answer: "aren't having",
+        },
+        {
+          type: 'fill-blank',
+          template: 'I ___ very well today. (feel)',
+          wordBank: ["am not feeling", "isn't feeling", "aren't feeling", "don't feel"],
+          answer: "am not feeling",
+        },
+        {
+          type: 'multiple-choice',
+          question: 'What is the -ing form of "sit"?',
+          options: ['siting', 'sitting', 'sittting', 'siting'],
+          answer: 'sitting',
+        },
+        {
+          type: 'multiple-choice',
+          question: 'What is the -ing form of "make"?',
+          options: ['makeing', 'making', 'makking', 'maked'],
+          answer: 'making',
+        },
+        {
+          type: 'multiple-choice',
+          question: 'What is the -ing form of "run"?',
+          options: ['runing', 'runnning', 'running', 'runin'],
+          answer: 'running',
+        },
+        {
+          type: 'matching',
+          pairs: [
+            { left: 'write', right: 'writing' },
+            { left: 'swim', right: 'swimming' },
+            { left: 'study', right: 'studying' },
+            { left: 'come', right: 'coming' },
+            { left: 'get', right: 'getting' },
+          ],
+        },
+        {
+          type: 'true-false',
+          statement: 'For verbs ending in a short vowel + consonant (e.g. run), we double the consonant before -ing.',
+          answer: true,
+        },
+        {
+          type: 'true-false',
+          statement: 'For verbs ending in -e (e.g. make), we keep the -e and add -ing (makeing).',
+          answer: false,
+        },
+        {
+          type: 'word-order',
+          words: ["isn't", 'he', 'the', 'moment', 'at', 'listening', '.'],
+          answer: ['He', "isn't", 'listening', 'at', 'the', 'moment', '.'],
+        },
+      ],
+    },
+    {
+      id: 'unit4-grammar4',
+      type: 'grammar',
+      title: 'Present continuous vs present simple',
+      canDo: 'I can choose between present continuous and present simple.',
+      exercises: [
+        {
+          type: 'flashcard',
+          cards: [
+            { front: 'present simple', back: 'habits and routines → "I walk to school every day."' },
+            { front: 'present continuous', back: 'actions happening now → "I am walking to school right now."' },
+            { front: 'always / usually / often', back: 'time words that go with present simple' },
+            { front: 'now / at the moment / right now / today', back: 'time words that go with present continuous' },
+            { front: 'She reads books.', back: 'present simple — a habit she has' },
+            { front: 'She is reading a book.', back: 'present continuous — she is doing it right now' },
+          ],
+        },
+        {
+          type: 'multiple-choice',
+          question: 'She ___ to school every day. (routine)',
+          options: ['is walking', 'walks', 'walk', 'are walking'],
+          answer: 'walks',
+        },
+        {
+          type: 'multiple-choice',
+          question: 'Look! He ___ a goal! (happening now)',
+          options: ['scores', 'score', 'is scoring', 'are scoring'],
+          answer: 'is scoring',
+        },
+        {
+          type: 'multiple-choice',
+          question: 'They usually ___ lunch at 1 pm.',
+          options: ['are having', 'is having', 'have', 'having'],
+          answer: 'have',
+        },
+        {
+          type: 'multiple-choice',
+          question: 'Right now, the students ___ a test.',
+          options: ['write', 'writes', 'are writing', 'is writing'],
+          answer: 'are writing',
+        },
+        {
+          type: 'true-false',
+          statement: '"At the moment" is a clue to use the present continuous.',
+          answer: true,
+        },
+        {
+          type: 'true-false',
+          statement: '"Every day" is a clue to use the present continuous.',
+          answer: false,
+        },
+        {
+          type: 'matching',
+          pairs: [
+            { left: 'I eat breakfast every morning.', right: 'present simple' },
+            { left: 'I am eating breakfast now.', right: 'present continuous' },
+            { left: 'She often reads at night.', right: 'present simple' },
+            { left: 'She is reading right now.', right: 'present continuous' },
+          ],
+        },
+        {
+          type: 'fill-blank',
+          template: 'Be quiet! The baby ___ . (sleep — happening now)',
+          wordBank: ['sleeps', 'is sleeping', 'are sleeping', 'sleep'],
+          answer: 'is sleeping',
+        },
+        {
+          type: 'fill-blank',
+          template: 'He usually ___ to bed at 10 pm. (go — routine)',
+          wordBank: ['is going', 'are going', 'goes', 'going'],
+          answer: 'goes',
+        },
+        {
+          type: 'word-order',
+          words: ['now', 'she', 'but', 'usually', 'is', 'studying', 'she', 'watches', 'TV', '.'],
+          answer: ['She', 'is', 'studying', 'now', 'but', 'usually', 'she', 'watches', 'TV', '.'],
+        },
+      ],
+    },
+  ],
+};

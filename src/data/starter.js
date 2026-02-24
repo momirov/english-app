@@ -1,0 +1,200 @@
+export const starter = {
+  id: 'starter',
+  number: 0,
+  title: 'Starter Unit',
+  color: '#8e44ad',
+  lessons: [
+    {
+      id: 'starter-hobbies',
+      type: 'vocabulary',
+      title: 'Hobbies and free time',
+      canDo: 'I can talk about hobbies and free time activities.',
+      exercises: [
+        {
+          type: 'flashcard',
+          cards: [
+            { front: 'read books', back: '📚 to look at and understand written words' },
+            { front: 'play football', back: '⚽ to kick a ball with others' },
+            { front: 'listen to music', back: '🎵 to hear songs and sounds' },
+            { front: 'watch TV', back: '📺 to look at programmes on a screen' },
+            { front: 'play video games', back: '🎮 to play games on a computer or console' },
+            { front: 'go swimming', back: '🏊 to move through water' },
+            { front: 'draw pictures', back: '✏️ to make images with a pencil or pen' },
+            { front: 'cook food', back: '🍳 to prepare meals' },
+          ],
+        },
+        {
+          type: 'matching',
+          pairs: [
+            { left: 'read books', right: '📚' },
+            { left: 'play football', right: '⚽' },
+            { left: 'listen to music', right: '🎵' },
+            { left: 'watch TV', right: '📺' },
+            { left: 'play video games', right: '🎮' },
+            { left: 'go swimming', right: '🏊' },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'starter-be',
+      type: 'grammar',
+      title: 'The verb "be"',
+      canDo: 'I can use the verb "be" in affirmative and negative sentences.',
+      exercises: [
+        {
+          type: 'grammar-table',
+          title: 'be: affirmative',
+          rows: [
+            { prompt: 'I', answer: 'am' },
+            { prompt: 'You', answer: 'are' },
+            { prompt: 'He / She / It', answer: 'is' },
+            { prompt: 'We / They', answer: 'are' },
+          ],
+        },
+        {
+          type: 'fill-blank',
+          template: 'She ___ a student.',
+          wordBank: ['am', 'is', 'are', 'be'],
+          answer: 'is',
+        },
+        {
+          type: 'fill-blank',
+          template: 'We ___ from Spain.',
+          wordBank: ['am', 'is', 'are', 'be'],
+          answer: 'are',
+        },
+        {
+          type: 'fill-blank',
+          template: 'I ___ 14 years old.',
+          wordBank: ['am', 'is', 'are', 'be'],
+          answer: 'am',
+        },
+        {
+          type: 'multiple-choice',
+          question: 'He ___ from England.',
+          options: ['am', 'is', 'are', 'be'],
+          answer: 'is',
+        },
+        {
+          type: 'multiple-choice',
+          question: 'They ___ happy today.',
+          options: ['am', 'is', 'are', 'be'],
+          answer: 'are',
+        },
+      ],
+    },
+    {
+      id: 'starter-possessives',
+      type: 'grammar',
+      title: 'Possessive adjectives',
+      canDo: "I can use possessive adjectives to talk about people's things.",
+      exercises: [
+        {
+          type: 'grammar-table',
+          title: 'Possessive adjectives',
+          rows: [
+            { prompt: 'I', answer: 'my' },
+            { prompt: 'you', answer: 'your' },
+            { prompt: 'he', answer: 'his' },
+            { prompt: 'she', answer: 'her' },
+            { prompt: 'it', answer: 'its' },
+            { prompt: 'we', answer: 'our' },
+            { prompt: 'they', answer: 'their' },
+          ],
+        },
+        {
+          type: 'multiple-choice',
+          question: 'This is ___ book. (belonging to me)',
+          options: ['my', 'your', 'his', 'her'],
+          answer: 'my',
+        },
+        {
+          type: 'multiple-choice',
+          question: "Tom loves ___ dog.",
+          options: ['my', 'her', 'his', 'their'],
+          answer: 'his',
+        },
+        {
+          type: 'fill-blank',
+          template: 'Anna and ___ sister are at school.',
+          wordBank: ['my', 'her', 'his', 'their'],
+          answer: 'her',
+        },
+        {
+          type: 'fill-blank',
+          template: 'We love ___ school.',
+          wordBank: ['my', 'our', 'their', 'your'],
+          answer: 'our',
+        },
+      ],
+    },
+    {
+      id: 'starter-adjectives',
+      type: 'vocabulary',
+      title: 'Adjectives',
+      canDo: 'I can use common adjectives to describe people and things.',
+      exercises: [
+        {
+          type: 'multiple-choice',
+          question: 'The opposite of "big" is ___.',
+          options: ['tall', 'small', 'fast', 'old'],
+          answer: 'small',
+        },
+        {
+          type: 'multiple-choice',
+          question: 'The opposite of "old" is ___.',
+          options: ['new', 'slow', 'short', 'sad'],
+          answer: 'new',
+        },
+        {
+          type: 'multiple-choice',
+          question: 'The opposite of "happy" is ___.',
+          options: ['small', 'ugly', 'sad', 'slow'],
+          answer: 'sad',
+        },
+        {
+          type: 'matching',
+          pairs: [
+            { left: 'big', right: 'small' },
+            { left: 'old', right: 'new' },
+            { left: 'fast', right: 'slow' },
+            { left: 'happy', right: 'sad' },
+            { left: 'hot', right: 'cold' },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'starter-countries',
+      type: 'vocabulary',
+      title: 'Countries and nationalities',
+      canDo: 'I can name countries and nationalities.',
+      exercises: [
+        {
+          type: 'matching',
+          pairs: [
+            { left: 'England', right: 'English' },
+            { left: 'Spain', right: 'Spanish' },
+            { left: 'France', right: 'French' },
+            { left: 'Germany', right: 'German' },
+            { left: 'China', right: 'Chinese' },
+            { left: 'Brazil', right: 'Brazilian' },
+          ],
+        },
+        {
+          type: 'multiple-choice',
+          question: 'She is from France. She is ___.',
+          options: ['French', 'Frances', 'Frenchish', 'Francer'],
+          answer: 'French',
+        },
+        {
+          type: 'multiple-choice',
+          question: 'He is from Spain. He is ___.',
+          options: ['Spanier', 'Spanish', 'Spanian', 'Spanishy'],
+          answer: 'Spanish',
+        },
+      ],
+    },
+  ],
+};
