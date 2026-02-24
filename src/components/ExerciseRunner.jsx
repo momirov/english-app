@@ -29,8 +29,8 @@ function ExerciseComponent({ exercise, onAnswer }) {
   }
 }
 
-export default function ExerciseRunner({ exercises, onComplete }) {
-  const [currentIdx, setCurrentIdx] = useState(0);
+export default function ExerciseRunner({ exercises, onComplete, initialIdx = 0, onIndexChange }) {
+  const [currentIdx, setCurrentIdx] = useState(initialIdx);
   const [score, setScore] = useState(0);
   const [transitioning, setTransitioning] = useState(false);
 
@@ -46,7 +46,9 @@ export default function ExerciseRunner({ exercises, onComplete }) {
       if (currentIdx + 1 >= total) {
         onComplete(newScore, total);
       } else {
-        setCurrentIdx(currentIdx + 1);
+        const nextIdx = currentIdx + 1;
+        setCurrentIdx(nextIdx);
+        onIndexChange?.(nextIdx);
       }
     }, 400);
   }

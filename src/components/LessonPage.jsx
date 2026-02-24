@@ -4,12 +4,13 @@ import ExerciseRunner from './ExerciseRunner.jsx';
 import ScoreScreen from './ScoreScreen.jsx';
 import { markLesson } from '../hooks/useProgress.js';
 
-export default function LessonPage({ lesson, unit, onBack }) {
-  const [phase, setPhase] = useState('intro'); // intro | exercises | score
+export default function LessonPage({ lesson, unit, onBack, initialIdx, onStart, onExerciseChange }) {
+  const [phase, setPhase] = useState(initialIdx !== undefined ? 'exercises' : 'intro'); // intro | exercises | score
   const [finalScore, setFinalScore] = useState(0);
   const [finalTotal, setFinalTotal] = useState(0);
 
   function handleStart() {
+    onStart?.();
     setPhase('exercises');
   }
 
@@ -21,6 +22,7 @@ export default function LessonPage({ lesson, unit, onBack }) {
   }
 
   function handleRetry() {
+    onStart?.();
     setPhase('exercises');
   }
 
@@ -70,7 +72,12 @@ export default function LessonPage({ lesson, unit, onBack }) {
     <div className="page">
       <Header title={lesson.title} onBack={onBack} unitColor={unit.color} />
       <main className="lesson-exercises">
-        <ExerciseRunner exercises={lesson.exercises} onComplete={handleComplete} />
+        <ExerciseRunner
+          exercises={lesson.exercises}
+          onComplete={handleComplete}
+          initialIdx={initialIdx}
+          onIndexChange={onExerciseChange}
+        />
       </main>
     </div>
   );
