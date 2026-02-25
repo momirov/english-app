@@ -19,7 +19,6 @@ export default function GrammarTable({ exercise, onAnswer }) {
     });
     setScore(correct);
     setRevealed(true);
-    setTimeout(() => onAnswer(correct === exercise.rows.length), 900);
   }
 
   return (
@@ -69,11 +68,16 @@ export default function GrammarTable({ exercise, onAnswer }) {
         </button>
       )}
       {revealed && (
-        <p className="feedback">
-          {score === exercise.rows.length
-            ? '✓ Perfect!'
-            : `${score} / ${exercise.rows.length} correct`}
-        </p>
+        <>
+          <p className="feedback">
+            {score === exercise.rows.length
+              ? '✓ Perfect!'
+              : `${score} / ${exercise.rows.length} correct`}
+          </p>
+          <button className="btn-primary" onClick={() => onAnswer(score === exercise.rows.length, { title: exercise.title, rows: exercise.rows, studentAnswers: answers })} style={{ marginTop: '0.5rem' }}>
+            Next
+          </button>
+        </>
       )}
     </div>
   );

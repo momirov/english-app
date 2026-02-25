@@ -30,7 +30,7 @@ export default function WordOrder({ exercise, onAnswer }) {
     const isCorrect = answerLower === chosenLower;
     setCorrect(isCorrect);
     setRevealed(true);
-    setTimeout(() => onAnswer(isCorrect), 900);
+    setTimeout(() => onAnswer(isCorrect, { studentAnswer: chosen.join(' '), correctAnswer: exercise.answer.join(' ') }), 900);
   }
 
   function handleReset() {

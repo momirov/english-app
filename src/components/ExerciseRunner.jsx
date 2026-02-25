@@ -32,19 +32,22 @@ function ExerciseComponent({ exercise, onAnswer }) {
 export default function ExerciseRunner({ exercises, onComplete, initialIdx = 0, onIndexChange }) {
   const [currentIdx, setCurrentIdx] = useState(initialIdx);
   const [score, setScore] = useState(0);
+  const [answers, setAnswers] = useState([]);
   const [transitioning, setTransitioning] = useState(false);
 
   const total = exercises.length;
   const current = exercises[currentIdx];
 
-  function handleAnswer(correct) {
+  function handleAnswer(correct, detail = null) {
     const newScore = correct ? score + 1 : score;
+    const newAnswers = [...answers, { exercise: current, correct, detail }];
     setScore(newScore);
+    setAnswers(newAnswers);
     setTransitioning(true);
     setTimeout(() => {
       setTransitioning(false);
       if (currentIdx + 1 >= total) {
-        onComplete(newScore, total);
+        onComplete(newScore, total, newAnswers);
       } else {
         const nextIdx = currentIdx + 1;
         setCurrentIdx(nextIdx);

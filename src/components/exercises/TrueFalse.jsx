@@ -10,7 +10,7 @@ export default function TrueFalse({ exercise, onAnswer }) {
     setSelected(value);
     setRevealed(true);
     const correct = value === exercise.answer;
-    setTimeout(() => onAnswer(correct), 900);
+    setTimeout(() => onAnswer(correct, { statement: exercise.statement, studentAnswer: value, correctAnswer: exercise.answer }), 900);
   }
 
   function label(val) {

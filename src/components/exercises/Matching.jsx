@@ -24,7 +24,7 @@ export default function Matching({ exercise, onAnswer }) {
     if (Object.keys(matched).length === exercise.pairs.length && !done) {
       setDone(true);
       const allCorrect = Object.entries(matched).every(([l, r]) => correctMap[l] === r);
-      setTimeout(() => onAnswer(allCorrect), 600);
+      setTimeout(() => onAnswer(allCorrect, { pairs: exercise.pairs, studentMatches: matched }), 600);
     }
   }, [matched]);
 

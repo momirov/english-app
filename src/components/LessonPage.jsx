@@ -8,21 +8,24 @@ export default function LessonPage({ lesson, unit, onBack, initialIdx, onStart, 
   const [phase, setPhase] = useState(initialIdx !== undefined ? 'exercises' : 'intro'); // intro | exercises | score
   const [finalScore, setFinalScore] = useState(0);
   const [finalTotal, setFinalTotal] = useState(0);
+  const [finalAnswers, setFinalAnswers] = useState([]);
 
   function handleStart() {
     onStart?.();
     setPhase('exercises');
   }
 
-  function handleComplete(score, total) {
+  function handleComplete(score, total, answers) {
     markLesson(lesson.id, score, total);
     setFinalScore(score);
     setFinalTotal(total);
+    setFinalAnswers(answers);
     setPhase('score');
   }
 
   function handleRetry() {
     onStart?.();
+    setFinalAnswers([]);
     setPhase('exercises');
   }
 
@@ -59,6 +62,7 @@ export default function LessonPage({ lesson, unit, onBack, initialIdx, onStart, 
             score={finalScore}
             total={finalTotal}
             lessonTitle={lesson.title}
+            answers={finalAnswers}
             onRetry={handleRetry}
             onBack={onBack}
           />

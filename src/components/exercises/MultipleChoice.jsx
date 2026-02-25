@@ -10,7 +10,7 @@ export default function MultipleChoice({ exercise, onAnswer }) {
     setSelected(opt);
     setRevealed(true);
     const correct = opt === exercise.answer;
-    setTimeout(() => onAnswer(correct), 900);
+    setTimeout(() => onAnswer(correct, { question: exercise.question, studentAnswer: opt, correctAnswer: exercise.answer }), 900);
   }
 
   return (

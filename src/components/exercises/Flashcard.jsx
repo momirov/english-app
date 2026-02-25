@@ -19,7 +19,7 @@ export default function Flashcard({ exercise, onAnswer }) {
       setFlipped(false);
     } else {
       setDone(true);
-      setTimeout(() => onAnswer(true), 400);
+      setTimeout(() => onAnswer(true, { cards: exercise.cards }), 400);
     }
   }
 

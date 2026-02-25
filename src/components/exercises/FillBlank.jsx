@@ -13,7 +13,7 @@ export default function FillBlank({ exercise, onAnswer }) {
     setChosen(word);
     setRevealed(true);
     const correct = word === exercise.answer;
-    setTimeout(() => onAnswer(correct), 900);
+    setTimeout(() => onAnswer(correct, { template: exercise.template, studentAnswer: word, correctAnswer: exercise.answer }), 900);
   }
 
   return (
