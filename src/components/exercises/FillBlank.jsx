@@ -1,9 +1,19 @@
 import { useState } from 'react';
 import './Exercise.css';
 
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
 export default function FillBlank({ exercise, onAnswer }) {
   const [chosen, setChosen] = useState(null);
   const [revealed, setRevealed] = useState(false);
+  const [shuffledWords] = useState(() => shuffle(exercise.wordBank));
 
   // Build display parts: split on ___
   const parts = exercise.template.split('___');
@@ -27,7 +37,7 @@ export default function FillBlank({ exercise, onAnswer }) {
         {parts[1]}
       </p>
       <div className="word-bank">
-        {exercise.wordBank.map((word) => (
+        {shuffledWords.map((word) => (
           <button
             key={word}
             className={`word-chip ${chosen === word ? 'used' : ''}`}
