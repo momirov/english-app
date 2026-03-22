@@ -27,7 +27,7 @@ export default function GrammarTable({ exercise, onAnswer }) {
       <table className="grammar-table">
         <thead>
           <tr>
-            <th>Subject</th>
+            <th>{exercise.promptLabel || 'Subject'}</th>
             <th>Answer</th>
             {revealed && <th>Correct</th>}
           </tr>

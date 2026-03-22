@@ -210,6 +210,7 @@ export const unit5 = {
         {
           type: 'grammar-table',
           title: 'should / shouldn\'t',
+          promptLabel: 'Form',
           rows: [
             { prompt: 'Affirmative (+)', answer: 'You should drink water.' },
             { prompt: 'Negative (−)', answer: 'You shouldn\'t eat too much sugar.' },
