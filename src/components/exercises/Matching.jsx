@@ -12,10 +12,13 @@ function shuffle(arr) {
 
 export default function Matching({ exercise, onAnswer }) {
   const [lefts] = useState(() => exercise.pairs.map((p) => p.left));
-  const [rights, setRights] = useState(() => shuffle(exercise.pairs.map((p) => p.right)));
+  // Each right is {id, value} so duplicate values are still uniquely identifiable
+  const [rights, setRights] = useState(() =>
+    shuffle(exercise.pairs.map((p, i) => ({ id: i, value: p.right })))
+  );
   const [selectedLeft, setSelectedLeft] = useState(null);
-  const [matched, setMatched] = useState({}); // left -> right
-  const [wrong, setWrong] = useState(null);
+  const [matched, setMatched] = useState({}); // left -> right value
+  const [wrongId, setWrongId] = useState(null); // id of wrong right item
   const [done, setDone] = useState(false);
 
   const correctMap = Object.fromEntries(exercise.pairs.map((p) => [p.left, p.right]));
@@ -31,20 +34,20 @@ export default function Matching({ exercise, onAnswer }) {
   function handleLeft(item) {
     if (done) return;
     setSelectedLeft(item === selectedLeft ? null : item);
-    setWrong(null);
+    setWrongId(null);
   }
 
-  function handleRight(item) {
+  function handleRight(rightItem) {
     if (done || !selectedLeft) return;
-    const isCorrect = correctMap[selectedLeft] === item;
+    const isCorrect = correctMap[selectedLeft] === rightItem.value;
     if (isCorrect) {
-      setMatched((m) => ({ ...m, [selectedLeft]: item }));
-      setRights((r) => r.filter((x) => x !== item));
+      setMatched((m) => ({ ...m, [selectedLeft]: rightItem.value }));
+      setRights((r) => r.filter((x) => x.id !== rightItem.id));
       setSelectedLeft(null);
     } else {
-      setWrong({ left: selectedLeft, right: item });
+      setWrongId(rightItem.id);
       setTimeout(() => {
-        setWrong(null);
+        setWrongId(null);
         setSelectedLeft(null);
       }, 700);
     }
@@ -58,7 +61,7 @@ export default function Matching({ exercise, onAnswer }) {
           {lefts.map((l) => {
             const isMatched = matched[l] !== undefined;
             const isSelected = selectedLeft === l;
-            const isWrong = wrong?.left === l;
+            const isWrong = wrongId !== null && selectedLeft === l;
             return (
               <button
                 key={l}
@@ -70,19 +73,17 @@ export default function Matching({ exercise, onAnswer }) {
               </button>
             );
           })}
-          {/* Show matched pairs on left side */}
         </div>
         <div className="matching-col">
-          {/* Unmatched rights */}
           {rights.map((r) => {
-            const isWrong = wrong?.right === r;
+            const isWrong = r.id === wrongId;
             return (
               <button
-                key={r}
+                key={r.id}
                 className={`match-item ${isWrong ? 'wrong' : ''} ${selectedLeft ? 'clickable' : ''}`}
                 onClick={() => handleRight(r)}
               >
-                {r}
+                {r.value}
               </button>
             );
           })}
