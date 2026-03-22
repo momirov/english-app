@@ -122,12 +122,12 @@ export const unit1 = {
         },
         {
           type: 'word-order',
-          words: ['is', 'Oxford', 'older', 'than', 'London', '.'],
+          words: ['than', 'London', 'older', 'is', 'Oxford', '.'],
           answer: ['Oxford', 'is', 'older', 'than', 'London', '.'],
         },
         {
           type: 'word-order',
-          words: ['the', 'park', 'is', 'bigger', 'than', 'the', 'square', '.'],
+          words: ['bigger', 'than', 'the', 'square', 'the', 'park', 'is', '.'],
           answer: ['The', 'park', 'is', 'bigger', 'than', 'the', 'square', '.'],
         },
         {

@@ -196,7 +196,7 @@ export const unit5 = {
         },
         {
           type: 'word-order',
-          words: ['i', 'have', 'a', 'stomach', 'ache', '.'],
+          words: ['stomach', 'a', 'ache', 'have', 'i', '.'],
           answer: ['I', 'have', 'a', 'stomach', 'ache', '.'],
         },
       ],
@@ -271,13 +271,13 @@ export const unit5 = {
         },
         {
           type: 'word-order',
-          words: ['should', 'you', 'drink', 'more', 'water', '.'],
+          words: ['drink', 'more', 'should', 'water', 'you', '.'],
           answer: ['You', 'should', 'drink', 'more', 'water', '.'],
         },
         {
           type: 'word-order',
-          words: ['you', 'shouldn\'t', 'eat', 'late', 'at', 'night', '.'],
-          answer: ['You', 'shouldn\'t', 'eat', 'late', 'at', 'night', '.'],
+          words: ['late', 'eat', 'at', "shouldn't", 'night', 'you', '.'],
+          answer: ['You', "shouldn't", 'eat', 'late', 'at', 'night', '.'],
         },
       ],
     },

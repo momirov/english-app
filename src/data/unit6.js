@@ -188,13 +188,13 @@ export const unit6 = {
         },
         {
           type: 'word-order',
-          words: ['i', 'didn\'t', 'win', 'the', 'race', '.'],
-          answer: ['I', 'didn\'t', 'win', 'the', 'race', '.'],
+          words: ['the', 'race', 'win', "didn't", 'i', '.'],
+          answer: ['I', "didn't", 'win', 'the', 'race', '.'],
         },
         {
           type: 'word-order',
-          words: ['we', 'didn\'t', 'play', 'football', 'yesterday', '.'],
-          answer: ['We', 'didn\'t', 'play', 'football', 'yesterday', '.'],
+          words: ['football', 'play', 'yesterday', "didn't", 'we', '.'],
+          answer: ['We', "didn't", 'play', 'football', 'yesterday', '.'],
         },
       ],
     },
@@ -268,12 +268,12 @@ export const unit6 = {
         },
         {
           type: 'word-order',
-          words: ['did', 'you', 'play', 'football', 'yesterday', '?'],
+          words: ['play', 'yesterday', 'football', 'you', 'did', '?'],
           answer: ['Did', 'you', 'play', 'football', 'yesterday', '?'],
         },
         {
           type: 'word-order',
-          words: ['did', 'she', 'win', 'the', 'race', '?'],
+          words: ['the', 'win', 'did', 'race', 'she', '?'],
           answer: ['Did', 'she', 'win', 'the', 'race', '?'],
         },
       ],
