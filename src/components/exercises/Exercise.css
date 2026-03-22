@@ -435,6 +435,32 @@
   font-weight: 600;
 }
 
+/* Reading Comprehension */
+.rc-passage {
+  background: #f8f9fa;
+  border-left: 4px solid #5c7cfa;
+  border-radius: 6px;
+  padding: 1rem 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.rc-passage-text {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #343a40;
+  margin: 0;
+}
+
+.rc-question {
+  margin-top: 0.5rem;
+}
+
+.rc-progress {
+  font-size: 0.8rem;
+  color: #6c757d;
+  margin-bottom: 0.8rem;
+}
+
 /* Feedback */
 .feedback {
   margin-top: 1rem;

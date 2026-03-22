@@ -8,4 +8,9 @@ export default defineConfig({
   server: {
     allowedHosts: ['astra.tail783048.ts.net'],
   },
+  test: {
+    environment: 'jsdom',
+    globals: true,
+    setupFiles: './src/test/setup.js',
+  },
 })

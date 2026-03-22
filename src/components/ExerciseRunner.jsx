@@ -6,6 +6,7 @@ import TrueFalse from './exercises/TrueFalse.jsx';
 import GrammarTable from './exercises/GrammarTable.jsx';
 import Flashcard from './exercises/Flashcard.jsx';
 import WordOrder from './exercises/WordOrder.jsx';
+import ReadingComprehension from './exercises/ReadingComprehension.jsx';
 import ProgressBar from './ProgressBar.jsx';
 
 function ExerciseComponent({ exercise, onAnswer }) {
@@ -24,6 +25,8 @@ function ExerciseComponent({ exercise, onAnswer }) {
       return <Flashcard key={Math.random()} exercise={exercise} onAnswer={onAnswer} />;
     case 'word-order':
       return <WordOrder key={Math.random()} exercise={exercise} onAnswer={onAnswer} />;
+    case 'reading-comprehension':
+      return <ReadingComprehension key={Math.random()} exercise={exercise} onAnswer={onAnswer} />;
     default:
       return <p>Unknown exercise type: {exercise.type}</p>;
   }
