@@ -15,8 +15,8 @@ export default function Flashcard({ exercise, onAnswer }) {
 
   function handleNext() {
     if (index < total - 1) {
-      setIndex(index + 1);
       setFlipped(false);
+      setTimeout(() => setIndex(index + 1), 500);
     } else {
       setDone(true);
       setTimeout(() => onAnswer(true, { cards: exercise.cards }), 400);
