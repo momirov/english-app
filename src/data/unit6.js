@@ -120,5 +120,163 @@ export const unit6 = {
         },
       ],
     },
+    {
+      id: 'unit6-grammar2',
+      type: 'grammar',
+      title: 'Past simple: negatives',
+      canDo: 'I can use didn\'t to talk about things that didn\'t happen.',
+      exercises: [
+        {
+          type: 'grammar-table',
+          title: 'Past simple: negatives (e.g. She didn\'t play tennis.)',
+          rows: [
+            { prompt: 'I / You / We / They', answer: 'didn\'t + base verb' },
+            { prompt: 'He / She / It', answer: 'didn\'t + base verb' },
+          ],
+        },
+        {
+          type: 'fill-blank',
+          template: 'She ___ play tennis yesterday.',
+          wordBank: ['didn\'t play', 'don\'t play', 'played not'],
+          answer: 'didn\'t play',
+        },
+        {
+          type: 'fill-blank',
+          template: 'They ___ win the match.',
+          wordBank: ['didn\'t win', 'don\'t win', 'not won'],
+          answer: 'didn\'t win',
+        },
+        {
+          type: 'fill-blank',
+          template: 'I ___ run in the race.',
+          wordBank: ['didn\'t run', 'don\'t run', 'ran not'],
+          answer: 'didn\'t run',
+        },
+        {
+          type: 'fill-blank',
+          template: 'He ___ swim very fast.',
+          wordBank: ['didn\'t swim', 'don\'t swim', 'swam not'],
+          answer: 'didn\'t swim',
+        },
+        {
+          type: 'multiple-choice',
+          question: 'We ___ the match last night.',
+          options: ['didn\'t watch', 'don\'t watch', 'watched', 'not watched'],
+          answer: 'didn\'t watch',
+        },
+        {
+          type: 'multiple-choice',
+          question: 'She ___ to the gym yesterday.',
+          options: ['didn\'t go', 'don\'t go', 'not went', 'didn\'t went'],
+          answer: 'didn\'t go',
+        },
+        {
+          type: 'multiple-choice',
+          question: 'They ___ any goals.',
+          options: ['didn\'t score', 'don\'t score', 'scored not', 'didn\'t scored'],
+          answer: 'didn\'t score',
+        },
+        {
+          type: 'true-false',
+          statement: 'We use \'didn\'t\' with all subjects in the past simple.',
+          answer: true,
+        },
+        {
+          type: 'true-false',
+          statement: 'We add \'-ed\' to the verb after \'didn\'t\'.',
+          answer: false,
+        },
+        {
+          type: 'word-order',
+          words: ['i', 'didn\'t', 'win', 'the', 'race', '.'],
+          answer: ['I', 'didn\'t', 'win', 'the', 'race', '.'],
+        },
+        {
+          type: 'word-order',
+          words: ['we', 'didn\'t', 'play', 'football', 'yesterday', '.'],
+          answer: ['We', 'didn\'t', 'play', 'football', 'yesterday', '.'],
+        },
+      ],
+    },
+    {
+      id: 'unit6-grammar3',
+      type: 'grammar',
+      title: 'Past simple: questions',
+      canDo: 'I can ask and answer questions in the past simple.',
+      exercises: [
+        {
+          type: 'grammar-table',
+          title: 'Past simple: questions',
+          promptLabel: 'Form',
+          rows: [
+            { prompt: 'Question', answer: 'Did + subject + base verb?' },
+            { prompt: 'Short answer (+)', answer: 'Yes, I / you / he / she / we / they did.' },
+            { prompt: 'Short answer (−)', answer: 'No, I / you / he / she / we / they didn\'t.' },
+          ],
+        },
+        {
+          type: 'fill-blank',
+          template: '___ you watch the match?',
+          wordBank: ['Did', 'Do', 'Was'],
+          answer: 'Did',
+        },
+        {
+          type: 'fill-blank',
+          template: 'Did she ___ in the race?',
+          wordBank: ['run', 'ran', 'running'],
+          answer: 'run',
+        },
+        {
+          type: 'fill-blank',
+          template: '___ they win the cup?',
+          wordBank: ['Did', 'Do', 'Were'],
+          answer: 'Did',
+        },
+        {
+          type: 'fill-blank',
+          template: 'Did he ___ football at school?',
+          wordBank: ['play', 'played', 'playing'],
+          answer: 'play',
+        },
+        {
+          type: 'multiple-choice',
+          question: '___ you go to the gym?',
+          options: ['Did', 'Do', 'Was', 'Were'],
+          answer: 'Did',
+        },
+        {
+          type: 'multiple-choice',
+          question: 'Did she win? Yes, she ___.',
+          options: ['did', 'didn\'t', 'does', 'was'],
+          answer: 'did',
+        },
+        {
+          type: 'multiple-choice',
+          question: 'Did they score? No, they ___.',
+          options: ['didn\'t', 'did', 'don\'t', 'weren\'t'],
+          answer: 'didn\'t',
+        },
+        {
+          type: 'true-false',
+          statement: 'We use \'did\' at the start of past simple questions.',
+          answer: true,
+        },
+        {
+          type: 'true-false',
+          statement: 'We add \'-ed\' to the verb in past simple questions.',
+          answer: false,
+        },
+        {
+          type: 'word-order',
+          words: ['did', 'you', 'play', 'football', 'yesterday', '?'],
+          answer: ['Did', 'you', 'play', 'football', 'yesterday', '?'],
+        },
+        {
+          type: 'word-order',
+          words: ['did', 'she', 'win', 'the', 'race', '?'],
+          answer: ['Did', 'she', 'win', 'the', 'race', '?'],
+        },
+      ],
+    },
   ],
 };
