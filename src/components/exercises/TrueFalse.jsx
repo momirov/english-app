@@ -1,16 +1,22 @@
 import { useState } from 'react';
 import './Exercise.css';
+import useFeedback from '../../hooks/useFeedback';
 
 export default function TrueFalse({ exercise, onAnswer }) {
   const [selected, setSelected] = useState(null);
-  const [revealed, setRevealed] = useState(false);
+
+  const { revealed, waitingForAck, handleReveal, handleAck } = useFeedback({
+    onAnswer: () => onAnswer(selected === exercise.answer, {
+      statement: exercise.statement,
+      studentAnswer: selected,
+      correctAnswer: exercise.answer,
+    }),
+  });
 
   function handleSelect(value) {
     if (revealed) return;
     setSelected(value);
-    setRevealed(true);
-    const correct = value === exercise.answer;
-    setTimeout(() => onAnswer(correct, { statement: exercise.statement, studentAnswer: value, correctAnswer: exercise.answer }), 900);
+    handleReveal(value === exercise.answer);
   }
 
   function label(val) {
@@ -31,7 +37,7 @@ export default function TrueFalse({ exercise, onAnswer }) {
           }
           return (
             <button key={String(val)} className={cls} onClick={() => handleSelect(val)} disabled={revealed}>
-              {val ? 'True' : 'False'}
+              {label(val)}
             </button>
           );
         })}
@@ -42,6 +48,11 @@ export default function TrueFalse({ exercise, onAnswer }) {
             ? '✓ Correct!'
             : `✗ The answer is: ${exercise.answer ? 'True' : 'False'}`}
         </p>
+      )}
+      {waitingForAck && (
+        <div className="got-it-bar">
+          <button className="btn-primary" onClick={handleAck}>Got it</button>
+        </div>
       )}
     </div>
   );
