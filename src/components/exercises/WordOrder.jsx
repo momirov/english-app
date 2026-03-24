@@ -1,11 +1,18 @@
 import { useState } from 'react';
 import './Exercise.css';
+import useFeedback from '../../hooks/useFeedback';
 
 export default function WordOrder({ exercise, onAnswer }) {
   const [available, setAvailable] = useState([...exercise.words]);
   const [chosen, setChosen] = useState([]);
-  const [revealed, setRevealed] = useState(false);
-  const [correct, setCorrect] = useState(false);
+  const [lastCorrect, setLastCorrect] = useState(false);
+
+  const { revealed, waitingForAck, handleReveal, handleAck } = useFeedback({
+    onAnswer: () => onAnswer(lastCorrect, {
+      studentAnswer: chosen.join(' '),
+      correctAnswer: exercise.answer.join(' '),
+    }),
+  });
 
   function addWord(word, idx) {
     if (revealed) return;
@@ -25,12 +32,11 @@ export default function WordOrder({ exercise, onAnswer }) {
 
   function handleCheck() {
     if (chosen.length === 0) return;
-    const answerLower = exercise.answer.map((w) => w.toLowerCase()).join(' ');
-    const chosenLower = chosen.map((w) => w.toLowerCase()).join(' ');
-    const isCorrect = answerLower === chosenLower;
-    setCorrect(isCorrect);
-    setRevealed(true);
-    setTimeout(() => onAnswer(isCorrect, { studentAnswer: chosen.join(' '), correctAnswer: exercise.answer.join(' ') }), 900);
+    const isCorrect =
+      exercise.answer.map((w) => w.toLowerCase()).join(' ') ===
+      chosen.map((w) => w.toLowerCase()).join(' ');
+    setLastCorrect(isCorrect);
+    handleReveal(isCorrect);
   }
 
   function handleReset() {
@@ -43,7 +49,7 @@ export default function WordOrder({ exercise, onAnswer }) {
     <div className="exercise">
       <p className="exercise-label">Put the words in the correct order:</p>
 
-      <div className={`word-order-sentence ${revealed ? (correct ? 'correct-bg' : 'wrong-bg') : ''}`}>
+      <div className={`word-order-sentence ${revealed ? (lastCorrect ? 'correct-bg' : 'wrong-bg') : ''}`}>
         {chosen.length === 0 ? (
           <span className="placeholder">Click words below to build the sentence</span>
         ) : (
@@ -76,8 +82,13 @@ export default function WordOrder({ exercise, onAnswer }) {
 
       {revealed && (
         <p className="feedback">
-          {correct ? '✓ Correct!' : `✗ Correct order: ${exercise.answer.join(' ')}`}
+          {lastCorrect ? '✓ Correct!' : `✗ Correct order: ${exercise.answer.join(' ')}`}
         </p>
+      )}
+      {waitingForAck && (
+        <div className="got-it-bar">
+          <button className="btn-primary" onClick={handleAck}>Got it</button>
+        </div>
       )}
     </div>
   );
