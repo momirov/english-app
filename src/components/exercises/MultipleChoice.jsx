@@ -1,16 +1,22 @@
 import { useState } from 'react';
 import './Exercise.css';
+import useFeedback from '../../hooks/useFeedback';
 
 export default function MultipleChoice({ exercise, onAnswer }) {
   const [selected, setSelected] = useState(null);
-  const [revealed, setRevealed] = useState(false);
+
+  const { revealed, waitingForAck, handleReveal, handleAck } = useFeedback({
+    onAnswer: () => onAnswer(selected === exercise.answer, {
+      question: exercise.question,
+      studentAnswer: selected,
+      correctAnswer: exercise.answer,
+    }),
+  });
 
   function handleSelect(opt) {
     if (revealed) return;
     setSelected(opt);
-    setRevealed(true);
-    const correct = opt === exercise.answer;
-    setTimeout(() => onAnswer(correct, { question: exercise.question, studentAnswer: opt, correctAnswer: exercise.answer }), 900);
+    handleReveal(opt === exercise.answer);
   }
 
   return (
@@ -34,6 +40,11 @@ export default function MultipleChoice({ exercise, onAnswer }) {
         <p className="feedback">
           {selected === exercise.answer ? '✓ Correct!' : `✗ The answer is: ${exercise.answer}`}
         </p>
+      )}
+      {waitingForAck && (
+        <div className="got-it-bar">
+          <button className="btn-primary" onClick={handleAck}>Got it</button>
+        </div>
       )}
     </div>
   );
