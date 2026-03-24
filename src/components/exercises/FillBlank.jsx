@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './Exercise.css';
+import useFeedback from '../../hooks/useFeedback';
 
 function shuffle(arr) {
   const a = [...arr];
@@ -12,18 +13,22 @@ function shuffle(arr) {
 
 export default function FillBlank({ exercise, onAnswer }) {
   const [chosen, setChosen] = useState(null);
-  const [revealed, setRevealed] = useState(false);
   const [shuffledWords] = useState(() => shuffle(exercise.wordBank));
 
-  // Build display parts: split on ___
   const parts = exercise.template.split('___');
+
+  const { revealed, waitingForAck, handleReveal, handleAck } = useFeedback({
+    onAnswer: () => onAnswer(chosen === exercise.answer, {
+      template: exercise.template,
+      studentAnswer: chosen,
+      correctAnswer: exercise.answer,
+    }),
+  });
 
   function handlePick(word) {
     if (revealed) return;
     setChosen(word);
-    setRevealed(true);
-    const correct = word === exercise.answer;
-    setTimeout(() => onAnswer(correct, { template: exercise.template, studentAnswer: word, correctAnswer: exercise.answer }), 900);
+    handleReveal(word === exercise.answer);
   }
 
   return (
@@ -52,6 +57,11 @@ export default function FillBlank({ exercise, onAnswer }) {
         <p className="feedback">
           {chosen === exercise.answer ? '✓ Correct!' : `✗ The answer is: ${exercise.answer}`}
         </p>
+      )}
+      {waitingForAck && (
+        <div className="got-it-bar">
+          <button className="btn-primary" onClick={handleAck}>Got it</button>
+        </div>
       )}
     </div>
   );
