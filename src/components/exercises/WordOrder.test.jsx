@@ -46,4 +46,15 @@ describe('WordOrder', () => {
     await user.click(screen.getByRole('button', { name: 'Got it' }));
     expect(onAnswer).toHaveBeenCalledWith(false, expect.any(Object));
   });
+
+  it('disables word buttons after Check is clicked', async () => {
+    const user = userEvent.setup();
+    render(<WordOrder exercise={exercise} onAnswer={vi.fn()} />);
+    await user.click(screen.getByText('is'));
+    await user.click(screen.getByText('she'));
+    await user.click(screen.getByText('Check'));
+    // After reveal, all word buttons in sentence are disabled
+    const chosenButtons = screen.getAllByRole('button').filter(b => b.className.includes('wo-word'));
+    chosenButtons.forEach(btn => expect(btn).toBeDisabled());
+  });
 });

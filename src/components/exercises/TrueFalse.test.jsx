@@ -39,4 +39,13 @@ describe('TrueFalse', () => {
     await user.click(screen.getByRole('button', { name: 'Got it' }));
     expect(onAnswer).toHaveBeenCalledWith(false, expect.any(Object));
   });
+
+  it('disables True/False buttons after selection', async () => {
+    const user = userEvent.setup();
+    render(<TrueFalse exercise={exercise} onAnswer={vi.fn()} />);
+    await user.click(screen.getByText('False'));
+    // After selection, buttons are disabled (labels change to ✓/✗ prefix)
+    const buttons = screen.getAllByRole('button').filter(b => b.className.includes('tf-btn'));
+    buttons.forEach(btn => expect(btn).toBeDisabled());
+  });
 });

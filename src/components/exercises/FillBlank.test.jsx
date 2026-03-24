@@ -39,4 +39,16 @@ describe('FillBlank', () => {
     await user.click(screen.getByRole('button', { name: 'Got it' }));
     expect(onAnswer).toHaveBeenCalledWith(false, expect.any(Object));
   });
+
+  it('disables word bank buttons after selection', async () => {
+    const user = userEvent.setup();
+    render(<FillBlank exercise={exercise} onAnswer={vi.fn()} />);
+    const buttons = screen.getAllByRole('button').filter(b => b.className.includes('word-chip'));
+    // Click first button
+    await user.click(buttons[0]);
+    // After selection, all word-chip buttons are disabled
+    screen.getAllByRole('button').filter(b => b.className.includes('word-chip')).forEach(btn => {
+      expect(btn).toBeDisabled();
+    });
+  });
 });
