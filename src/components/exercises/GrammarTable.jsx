@@ -74,7 +74,16 @@ export default function GrammarTable({ exercise, onAnswer }) {
               ? '✓ Perfect!'
               : `${score} / ${exercise.rows.length} correct`}
           </p>
-          <button className="btn-primary" onClick={() => onAnswer(score === exercise.rows.length, { title: exercise.title, rows: exercise.rows, studentAnswers: answers })} style={{ marginTop: '0.5rem' }}>
+          <button
+            className="btn-primary"
+            onClick={() => onAnswer(true, {
+              title: exercise.title,
+              rows: exercise.rows,
+              studentAnswers: answers,
+              proportional: { correct: score, total: exercise.rows.length },
+            })}
+            style={{ marginTop: '0.5rem' }}
+          >
             Next
           </button>
         </>
