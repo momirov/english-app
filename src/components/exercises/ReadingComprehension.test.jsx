@@ -42,31 +42,48 @@ describe('ReadingComprehension', () => {
     expect(screen.getByText('Paris')).toHaveClass('wrong');
   });
 
-  it('advances to the next question after answering', async () => {
+  it('shows "Got it" button on wrong answer and advances after clicking it', async () => {
     const user = userEvent.setup();
     render(<ReadingComprehension exercise={exercise} onAnswer={vi.fn()} />);
-    await user.click(screen.getByText('Athens'));
-    // wait for auto-advance (900ms timeout mocked by not being there yet — check next question appeared)
-    await screen.findByText('When did they take place?');
+    await user.click(screen.getByText('Paris')); // wrong
+    expect(screen.getByRole('button', { name: 'Got it' })).toBeInTheDocument();
+    await user.click(screen.getByRole('button', { name: 'Got it' }));
+    expect(await screen.findByText('When did they take place?')).toBeInTheDocument();
   });
 
-  it('calls onAnswer with correct=true when all questions answered correctly', async () => {
+  it('advances to the next question automatically on correct answer', async () => {
+    const user = userEvent.setup();
+    render(<ReadingComprehension exercise={exercise} onAnswer={vi.fn()} />);
+    await user.click(screen.getByText('Athens')); // correct — auto-advances
+    expect(await screen.findByText('When did they take place?')).toBeInTheDocument();
+  });
+
+  it('calls onAnswer with proportional scoring when all questions answered correctly', async () => {
     const user = userEvent.setup();
     const onAnswer = vi.fn();
     render(<ReadingComprehension exercise={exercise} onAnswer={onAnswer} />);
-    await user.click(screen.getByText('Athens'));
+    await user.click(screen.getByText('Athens')); // correct
     await screen.findByText('When did they take place?');
-    await user.click(screen.getByText('1896'));
-    await vi.waitFor(() => expect(onAnswer).toHaveBeenCalledWith(true, expect.any(Object)));
+    await user.click(screen.getByText('1896')); // correct
+    await vi.waitFor(() =>
+      expect(onAnswer).toHaveBeenCalledWith(true, expect.objectContaining({
+        proportional: { correct: 2, total: 2 },
+      }))
+    );
   });
 
-  it('calls onAnswer with correct=false when any question answered wrong', async () => {
+  it('calls onAnswer with proportional scoring when some questions are wrong', async () => {
     const user = userEvent.setup();
     const onAnswer = vi.fn();
     render(<ReadingComprehension exercise={exercise} onAnswer={onAnswer} />);
     await user.click(screen.getByText('Paris')); // wrong
+    await user.click(await screen.findByRole('button', { name: 'Got it' }));
     await screen.findByText('When did they take place?');
-    await user.click(screen.getByText('1896')); // correct
-    await vi.waitFor(() => expect(onAnswer).toHaveBeenCalledWith(false, expect.any(Object)));
+    await user.click(screen.getByText('1896')); // correct — last question auto-advances
+    await vi.waitFor(() =>
+      expect(onAnswer).toHaveBeenCalledWith(true, expect.objectContaining({
+        proportional: { correct: 1, total: 2 },
+      }))
+    );
   });
 });

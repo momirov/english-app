@@ -1,33 +1,46 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import './Exercise.css';
+import useFeedback from '../../hooks/useFeedback';
 
 export default function ReadingComprehension({ exercise, onAnswer }) {
   const { passage, questions } = exercise;
   const [qIdx, setQIdx] = useState(0);
   const [selected, setSelected] = useState(null);
-  const [revealed, setRevealed] = useState(false);
-  const [wrongCount, setWrongCount] = useState(0);
+  const wrongCountRef = useRef(0);
+  // resetRef breaks the circular dependency: handleAdvance needs reset,
+  // but reset comes from useFeedback which needs handleAdvance
+  const resetRef = useRef(null);
 
   const current = questions[qIdx];
+
+  function handleAdvance() {
+    const isLast = qIdx + 1 >= questions.length;
+    if (isLast) {
+      const wc = wrongCountRef.current;
+      onAnswer(true, {
+        wrongCount: wc,
+        total: questions.length,
+        proportional: { correct: questions.length - wc, total: questions.length },
+      });
+    } else {
+      setQIdx((q) => q + 1);
+      setSelected(null);
+      resetRef.current?.();
+    }
+  }
+
+  const { revealed, waitingForAck, handleReveal, handleAck, reset } = useFeedback({
+    onAnswer: handleAdvance,
+  });
+  // Keep resetRef current so handleAdvance can call reset()
+  resetRef.current = reset;
 
   function handleSelect(opt) {
     if (revealed) return;
     setSelected(opt);
-    setRevealed(true);
-    const correct = opt === current.answer;
-    const newWrongCount = correct ? wrongCount : wrongCount + 1;
-    setWrongCount(newWrongCount);
-
-    setTimeout(() => {
-      const isLast = qIdx + 1 >= questions.length;
-      if (isLast) {
-        onAnswer(newWrongCount === 0, { wrongCount: newWrongCount, total: questions.length });
-      } else {
-        setQIdx(qIdx + 1);
-        setSelected(null);
-        setRevealed(false);
-      }
-    }, 900);
+    const isCorrect = opt === current.answer;
+    if (!isCorrect) wrongCountRef.current += 1;
+    handleReveal(isCorrect);
   }
 
   return (
@@ -57,6 +70,11 @@ export default function ReadingComprehension({ exercise, onAnswer }) {
           <p className="feedback">
             {selected === current.answer ? '✓ Correct!' : `✗ The answer is: ${current.answer}`}
           </p>
+        )}
+        {waitingForAck && (
+          <div className="got-it-bar">
+            <button className="btn-primary" onClick={handleAck}>Got it</button>
+          </div>
         )}
       </div>
     </div>
