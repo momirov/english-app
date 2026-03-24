@@ -32,6 +32,7 @@ export default function useFeedback({ onAnswer }) {
 
   const handleAck = useCallback(() => {
     clearTimeout(timerRef.current);
+    setWaitingForAck(false);
     onAnswerRef.current();
   }, []);
 
