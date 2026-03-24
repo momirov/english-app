@@ -504,3 +504,8 @@
 .btn-secondary:hover {
   background: #dee2e6;
 }
+
+/* Got it button (shown after wrong answer) */
+.got-it-bar {
+  margin-top: 0.75rem;
+}
