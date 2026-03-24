@@ -42,7 +42,10 @@ export default function ExerciseRunner({ exercises, onComplete, initialIdx = 0, 
   const current = exercises[currentIdx];
 
   function handleAnswer(correct, detail = null) {
-    const newScore = correct ? score + 1 : score;
+    const increment = detail?.proportional
+      ? detail.proportional.correct / detail.proportional.total
+      : correct ? 1 : 0;
+    const newScore = score + increment;
     const newAnswers = [...answers, { exercise: current, correct, detail }];
     setScore(newScore);
     setAnswers(newAnswers);
