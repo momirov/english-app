@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { CollabScope } from '../collab/useCollabField.jsx';
 import MultipleChoice from './exercises/MultipleChoice.jsx';
 import FillBlank from './exercises/FillBlank.jsx';
 import Matching from './exercises/Matching.jsx';
@@ -12,21 +13,21 @@ import ProgressBar from './ProgressBar.jsx';
 function ExerciseComponent({ exercise, onAnswer }) {
   switch (exercise.type) {
     case 'multiple-choice':
-      return <MultipleChoice key={Math.random()} exercise={exercise} onAnswer={onAnswer} />;
+      return <MultipleChoice exercise={exercise} onAnswer={onAnswer} />;
     case 'fill-blank':
-      return <FillBlank key={Math.random()} exercise={exercise} onAnswer={onAnswer} />;
+      return <FillBlank exercise={exercise} onAnswer={onAnswer} />;
     case 'matching':
-      return <Matching key={Math.random()} exercise={exercise} onAnswer={onAnswer} />;
+      return <Matching exercise={exercise} onAnswer={onAnswer} />;
     case 'true-false':
-      return <TrueFalse key={Math.random()} exercise={exercise} onAnswer={onAnswer} />;
+      return <TrueFalse exercise={exercise} onAnswer={onAnswer} />;
     case 'grammar-table':
-      return <GrammarTable key={Math.random()} exercise={exercise} onAnswer={onAnswer} />;
+      return <GrammarTable exercise={exercise} onAnswer={onAnswer} />;
     case 'flashcard':
-      return <Flashcard key={Math.random()} exercise={exercise} onAnswer={onAnswer} />;
+      return <Flashcard exercise={exercise} onAnswer={onAnswer} />;
     case 'word-order':
-      return <WordOrder key={Math.random()} exercise={exercise} onAnswer={onAnswer} />;
+      return <WordOrder exercise={exercise} onAnswer={onAnswer} />;
     case 'reading-comprehension':
-      return <ReadingComprehension key={Math.random()} exercise={exercise} onAnswer={onAnswer} />;
+      return <ReadingComprehension exercise={exercise} onAnswer={onAnswer} />;
     default:
       return <p>Unknown exercise type: {exercise.type}</p>;
   }
@@ -35,6 +36,14 @@ function ExerciseComponent({ exercise, onAnswer }) {
 export default function ExerciseRunner({ exercises, onComplete, initialIdx = 0, onIndexChange }) {
   const [currentIdx, setCurrentIdx] = useState(initialIdx);
   const [score, setScore] = useState(0);
+
+  useEffect(() => {
+    if (initialIdx != null && initialIdx !== currentIdx) {
+      setCurrentIdx(initialIdx);
+    }
+    // Intentionally NOT depending on currentIdx — only react to prop changes.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [initialIdx]);
   const [answers, setAnswers] = useState([]);
   const [transitioning, setTransitioning] = useState(false);
 
@@ -71,7 +80,9 @@ export default function ExerciseRunner({ exercises, onComplete, initialIdx = 0, 
         <ProgressBar value={currentIdx} max={total} />
       </div>
       <div className={`runner-content ${transitioning ? 'fading' : ''}`}>
-        <ExerciseComponent key={currentIdx} exercise={current} onAnswer={handleAnswer} />
+        <CollabScope exerciseIndex={currentIdx}>
+          <ExerciseComponent key={currentIdx} exercise={current} onAnswer={handleAnswer} />
+        </CollabScope>
       </div>
     </div>
   );

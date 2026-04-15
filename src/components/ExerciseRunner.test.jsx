@@ -41,3 +41,18 @@ describe('ExerciseRunner — score accumulation', () => {
     expect(increment(undefined, true)).toBe(1);
   });
 });
+
+describe('ExerciseRunner remount regression', () => {
+  it('does not remount the exercise component on every parent render', () => {
+    const exercises = [
+      { type: 'multiple-choice', question: 'Q?', options: ['a','b','c','d'], answer: 'a' },
+    ];
+    const { rerender } = render(
+      <ExerciseRunner exercises={exercises} onComplete={() => {}} />
+    );
+    const before = screen.getByText('Q?');
+    rerender(<ExerciseRunner exercises={exercises} onComplete={() => {}} />);
+    const after = screen.getByText('Q?');
+    expect(before).toBe(after); // same DOM node — no remount
+  });
+});
