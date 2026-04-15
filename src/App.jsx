@@ -10,6 +10,7 @@ import SessionBanner from './components/collab/SessionBanner.jsx';
 import SessionHostControls from './components/collab/SessionHostControls.jsx';
 import { useSession } from './collab/useSession.jsx';
 import { persistSessionMeta, clearSessionMeta, readSessionMeta } from './collab/recovery.js';
+import { useNavSync } from './collab/useNavSync.jsx';
 
 function HomeRoute() {
   const [, navigate] = useLocation();
@@ -58,6 +59,7 @@ function LessonRoute() {
 }
 
 export default function App() {
+  useNavSync();
   const session = useSession();
   const [pendingJoinCode, setPendingJoinCode] = useState(null);
 
