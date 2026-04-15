@@ -25,9 +25,9 @@ export function createSessionManager({ transport, clientVersion }) {
   let roomCode = null;
   let handle = null;
   let peerGoneTimer = null;
+  let snapshotBuilder = null;
   const statusSubs = new Set();
   const typedSubs = new Map(); // type -> Set<fn>
-  const snapshotSubs = new Set(); // hooks for snapshot sync (Task 6)
 
   function setStatus(next) {
     if (status === next) return;
@@ -48,15 +48,20 @@ export function createSessionManager({ transport, clientVersion }) {
     }
     if (m.type === MSG.HELLO) {
       const wasConnecting = status === 'connecting';
-      // Peer has arrived. Move to connected.
       setStatus('connected');
-      // Reply with our own HELLO if this is the first time (peer may have registered
-      // onMessage late and missed our initial HELLO from onPeerState).
+      // Reply HELLO if we were still connecting.
       if (wasConnecting && handle) {
         handle.send(makeMessage(MSG.HELLO, { role, clientVersion }));
       }
-      // Ask subscribers (recovery hook) to build and send a snapshot.
-      for (const fn of snapshotSubs) fn();
+      // Send snapshot to peer (only on first hello, when we were still connecting).
+      if (wasConnecting && snapshotBuilder && handle) {
+        try {
+          const snap = snapshotBuilder();
+          if (snap) handle.send(makeMessage(MSG.SNAPSHOT, snap));
+        } catch (e) {
+          console.warn('[collab] snapshot builder error', e);
+        }
+      }
       return;
     }
     if (m.type === MSG.BYE) {
@@ -159,11 +164,7 @@ export function createSessionManager({ transport, clientVersion }) {
       setStatus('error');
       return false;
     },
-    // Used by recovery hook in Task 14.
-    _onHelloReceived(fn) {
-      snapshotSubs.add(fn);
-      return () => snapshotSubs.delete(fn);
-    },
+    setSnapshotBuilder(fn) { snapshotBuilder = fn; },
     _debug_sendRaw(obj) {
       if (!handle) return;
       handle.send(obj);
