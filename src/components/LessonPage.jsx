@@ -3,12 +3,14 @@ import Header from './Header.jsx';
 import ExerciseRunner from './ExerciseRunner.jsx';
 import ScoreScreen from './ScoreScreen.jsx';
 import { markLesson } from '../hooks/useProgress.js';
+import { useSession } from '../collab/useSession.jsx';
 
 export default function LessonPage({ lesson, unit, onBack, initialIdx, onStart, onExerciseChange }) {
   const [phase, setPhase] = useState(initialIdx !== undefined ? 'exercises' : 'intro'); // intro | exercises | score
   const [finalScore, setFinalScore] = useState(0);
   const [finalTotal, setFinalTotal] = useState(0);
   const [finalAnswers, setFinalAnswers] = useState([]);
+  const session = useSession();
 
   function handleStart() {
     onStart?.();
@@ -16,7 +18,9 @@ export default function LessonPage({ lesson, unit, onBack, initialIdx, onStart, 
   }
 
   function handleComplete(score, total, answers) {
-    markLesson(lesson.id, score, total);
+    if (!session.isActive) {
+      markLesson(lesson.id, score, total);
+    }
     setFinalScore(score);
     setFinalTotal(total);
     setFinalAnswers(answers);
