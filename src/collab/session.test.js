@@ -85,3 +85,32 @@ describe('SessionManager', () => {
     expect(statusChanges).toContain('connected');
   });
 });
+
+describe('SessionManager reconnect + peer-gone timeout', () => {
+  it('goes to error after 5 failed reconnect attempts', async () => {
+    const failing = {
+      async createRoom() { throw new Error('no network'); },
+      async joinRoom() { throw new Error('no network'); },
+    };
+    const mgr = createSessionManager({ transport: failing, clientVersion: '1.0' });
+    const seen = [];
+    mgr.onStatusChange((s) => seen.push(s));
+    await mgr.tryReconnect({ as: 'student', roomCode: 'R', maxAttempts: 5, backoffMs: () => 0 });
+    expect(mgr.getStatus()).toBe('error');
+    expect(seen.filter(s => s === 'connecting').length).toBeGreaterThanOrEqual(1);
+  });
+
+  it('peer-gone auto-teardowns after timeout', async () => {
+    vi.useFakeTimers();
+    const { teacher, student } = mkPair('X');
+    await teacher.start({ as: 'teacher', roomCode: 'X' });
+    await student.join({ roomCode: 'X' });
+    await Promise.resolve();
+    student.end();
+    await Promise.resolve();
+    expect(teacher.getStatus()).toBe('peer-gone');
+    await vi.advanceTimersByTimeAsync(30_000);
+    expect(teacher.getStatus()).toBe('idle');
+    vi.useRealTimers();
+  });
+});

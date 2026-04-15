@@ -24,6 +24,7 @@ export function createSessionManager({ transport, clientVersion }) {
   let role = null;
   let roomCode = null;
   let handle = null;
+  let peerGoneTimer = null;
   const statusSubs = new Set();
   const typedSubs = new Map(); // type -> Set<fn>
   const snapshotSubs = new Set(); // hooks for snapshot sync (Task 6)
@@ -59,7 +60,16 @@ export function createSessionManager({ transport, clientVersion }) {
       return;
     }
     if (m.type === MSG.BYE) {
-      teardown('peer-gone');
+      // Close the transport handle but stay in peer-gone with a 30s timer.
+      if (handle) { try { handle.close(); } catch {} handle = null; }
+      role = null;
+      roomCode = null;
+      setStatus('peer-gone');
+      if (peerGoneTimer) { clearTimeout(peerGoneTimer); }
+      peerGoneTimer = setTimeout(() => {
+        peerGoneTimer = null;
+        teardown('idle');
+      }, 30_000);
       return;
     }
     emit(m.type, m.payload);
@@ -67,10 +77,16 @@ export function createSessionManager({ transport, clientVersion }) {
 
   function onPeerState(s) {
     if (s === 'connected') {
-      // send hello regardless of our current status so the peer can confirm us
-      handle.send(makeMessage(MSG.HELLO, { role, clientVersion }));
+      if (peerGoneTimer) { clearTimeout(peerGoneTimer); peerGoneTimer = null; }
+      if (status === 'connecting') {
+        handle.send(makeMessage(MSG.HELLO, { role, clientVersion }));
+      }
     } else if (s === 'disconnected' && (status === 'connected' || status === 'connecting')) {
       setStatus('peer-gone');
+      peerGoneTimer = setTimeout(() => {
+        peerGoneTimer = null;
+        teardown('idle');
+      }, 30_000);
     }
   }
 
@@ -84,6 +100,7 @@ export function createSessionManager({ transport, clientVersion }) {
   }
 
   function teardown(finalStatus) {
+    if (peerGoneTimer) { clearTimeout(peerGoneTimer); peerGoneTimer = null; }
     if (handle) {
       try { handle.close(); } catch {}
       handle = null;
@@ -93,7 +110,7 @@ export function createSessionManager({ transport, clientVersion }) {
     setStatus(finalStatus);
   }
 
-  return {
+  const api = {
     getStatus: () => status,
     get isActive() { return status === 'connected'; },
     getRole: () => role,
@@ -126,6 +143,22 @@ export function createSessionManager({ transport, clientVersion }) {
       set.add(handler);
       return () => set.delete(handler);
     },
+    async tryReconnect({ as, roomCode: code, maxAttempts = 5, backoffMs = (i) => Math.min(500 * 2 ** i, 8000) }) {
+      for (let i = 0; i < maxAttempts; i++) {
+        setStatus('connecting');
+        try {
+          if (as === 'teacher') await api.start({ as, roomCode: code });
+          else await api.join({ roomCode: code });
+          return true;
+        } catch (e) {
+          if (i < maxAttempts - 1) {
+            await new Promise((r) => setTimeout(r, backoffMs(i)));
+          }
+        }
+      }
+      setStatus('error');
+      return false;
+    },
     // Used by recovery hook in Task 14.
     _onHelloReceived(fn) {
       snapshotSubs.add(fn);
@@ -137,4 +170,5 @@ export function createSessionManager({ transport, clientVersion }) {
     },
     _protocolVersion: PROTOCOL_VERSION,
   };
+  return api;
 }
