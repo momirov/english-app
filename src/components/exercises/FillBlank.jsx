@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './Exercise.css';
 import useFeedback from '../../hooks/useFeedback';
+import { useCollabField } from '../../collab/useCollabField.jsx';
 
 function shuffle(arr) {
   const a = [...arr];
@@ -12,7 +13,7 @@ function shuffle(arr) {
 }
 
 export default function FillBlank({ exercise, onAnswer }) {
-  const [chosen, setChosen] = useState(null);
+  const [chosen, setChosen] = useCollabField('chosen', null);
   const [shuffledWords] = useState(() => shuffle(exercise.wordBank));
 
   const parts = exercise.template.split('___');
