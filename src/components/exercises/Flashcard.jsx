@@ -1,9 +1,10 @@
 import { useState, useRef } from 'react';
 import './Exercise.css';
+import { useCollabField } from '../../collab/useCollabField.jsx';
 
 export default function Flashcard({ exercise, onAnswer }) {
-  const [index, setIndex] = useState(0);
-  const [flipped, setFlipped] = useState(false);
+  const [index, setIndex] = useCollabField('index', 0);
+  const [flipped, setFlipped] = useCollabField('flipped', false);
   const [phase, setPhase] = useState('idle'); // 'idle' | 'out' | 'in'
   const [done, setDone] = useState(false);
   const nextIndexRef = useRef(null);

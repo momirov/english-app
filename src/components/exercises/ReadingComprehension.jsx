@@ -1,11 +1,12 @@
 import { useState, useRef } from 'react';
 import './Exercise.css';
 import useFeedback from '../../hooks/useFeedback';
+import { useCollabField } from '../../collab/useCollabField.jsx';
 
 export default function ReadingComprehension({ exercise, onAnswer }) {
   const { passage, questions } = exercise;
-  const [qIdx, setQIdx] = useState(0);
-  const [selected, setSelected] = useState(null);
+  const [qIdx, setQIdx] = useCollabField('qIdx', 0);
+  const [selected, setSelected] = useCollabField('selected', null);
   const wrongCountRef = useRef(0);
   // resetRef breaks the circular dependency: handleAdvance needs reset,
   // but reset comes from useFeedback which needs handleAdvance

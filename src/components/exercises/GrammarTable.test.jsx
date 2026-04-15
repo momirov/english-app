@@ -1,7 +1,12 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, it, expect, vi } from 'vitest';
 import GrammarTable from './GrammarTable';
+import { SessionProvider } from '../../collab/useSession.jsx';
+import { CollabScope } from '../../collab/useCollabField.jsx';
+import { createSessionManager } from '../../collab/session.js';
+import { createMemoryTransportPair } from '../../collab/transports/memory.js';
+import { MSG } from '../../collab/protocol.js';
 
 const exercise = {
   type: 'grammar-table',
@@ -53,5 +58,34 @@ describe('GrammarTable', () => {
     expect(onAnswer).toHaveBeenCalledWith(true, expect.objectContaining({
       proportional: { correct: 2, total: 3 },
     }));
+  });
+});
+
+describe('GrammarTable collab', () => {
+  it('broadcasts answers when a cell is typed into', async () => {
+    const pair = createMemoryTransportPair('R');
+    const teacher = createSessionManager({ transport: pair.teacher, clientVersion: '1.0' });
+    const student = createSessionManager({ transport: pair.student, clientVersion: '1.0' });
+    await teacher.start({ as: 'teacher', roomCode: 'R' });
+    await student.join({ roomCode: 'R' });
+    await Promise.resolve();
+    const received = [];
+    student.on(MSG.INPUT, (p) => received.push(p));
+    const ex = {
+      type: 'grammar-table',
+      title: 'be',
+      rows: [{ prompt: 'I', answer: 'am' }, { prompt: 'You', answer: 'are' }],
+    };
+    render(
+      <SessionProvider manager={teacher}>
+        <CollabScope exerciseIndex={0}>
+          <GrammarTable exercise={ex} onAnswer={() => {}} />
+        </CollabScope>
+      </SessionProvider>
+    );
+    const inputs = screen.getAllByRole('textbox');
+    fireEvent.change(inputs[0], { target: { value: 'am' } });
+    await new Promise(r => setTimeout(r, 10));
+    expect(received.some(p => p.field === 'answers' && Array.isArray(p.value) && p.value[0] === 'am')).toBe(true);
   });
 });

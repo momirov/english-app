@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import './Exercise.css';
+import { useCollabField } from '../../collab/useCollabField.jsx';
 
 export default function GrammarTable({ exercise, onAnswer }) {
-  const [answers, setAnswers] = useState(exercise.rows.map(() => ''));
-  const [revealed, setRevealed] = useState(false);
+  const [answers, setAnswers] = useCollabField('answers', exercise.rows.map(() => ''));
+  const [revealed, setRevealed] = useCollabField('revealed', false);
   const [score, setScore] = useState(0);
 
   function handleChange(idx, val) {
