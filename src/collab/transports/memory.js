@@ -8,6 +8,7 @@ function makeHandle(roomCode, role, otherHandleRef) {
   const messageSubs = new Set();
   const peerSubs = new Set();
   let closed = false;
+  let lastPeerState = null; // tracks last emitted peer state for late subscribers
   const handle = {
     roomCode,
     role,
@@ -23,6 +24,8 @@ function makeHandle(roomCode, role, otherHandleRef) {
     },
     onPeerState(fn) {
       peerSubs.add(fn);
+      // Replay last peer state to late subscribers (e.g. session attach after joinRoom).
+      if (lastPeerState !== null) fn(lastPeerState);
       return () => peerSubs.delete(fn);
     },
     close() {
@@ -32,11 +35,14 @@ function makeHandle(roomCode, role, otherHandleRef) {
       const other = otherHandleRef.current;
       if (other && !other.__closed) {
         for (const fn of other.__peerSubs) fn('disconnected');
+        other.__lastPeerState = 'disconnected';
       }
     },
     __messageSubs: messageSubs,
     __peerSubs: peerSubs,
     __closed: closed,
+    get __lastPeerState() { return lastPeerState; },
+    set __lastPeerState(v) { lastPeerState = v; },
   };
   return handle;
 }
@@ -46,8 +52,9 @@ export function createMemoryTransportPair(roomCode) {
   const studentRef = { current: null };
 
   const teacher = {
-    async createRoom() {
-      const h = makeHandle(roomCode, 'teacher', studentRef);
+    async createRoom(code) {
+      const finalCode = code || roomCode;
+      const h = makeHandle(finalCode, 'teacher', studentRef);
       teacherRef.current = h;
       return h;
     },
@@ -66,8 +73,11 @@ export function createMemoryTransportPair(roomCode) {
       studentRef.current = h;
       // Both sides now see each other — fire connected on both.
       if (teacherRef.current) {
-        for (const fn of teacherRef.current.__peerSubs) fn('connected');
+        const teacherH = teacherRef.current;
+        for (const fn of teacherH.__peerSubs) fn('connected');
+        teacherH.__lastPeerState = 'connected';
         for (const fn of h.__peerSubs) fn('connected');
+        h.__lastPeerState = 'connected';
       }
       return h;
     },
