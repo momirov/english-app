@@ -1,7 +1,12 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, it, expect, vi } from 'vitest';
 import WordOrder from './WordOrder';
+import { SessionProvider } from '../../collab/useSession.jsx';
+import { CollabScope } from '../../collab/useCollabField.jsx';
+import { createSessionManager } from '../../collab/session.js';
+import { createMemoryTransportPair } from '../../collab/transports/memory.js';
+import { MSG } from '../../collab/protocol.js';
 
 const exercise = {
   type: 'word-order',
@@ -56,5 +61,29 @@ describe('WordOrder', () => {
     // After reveal, all word buttons in sentence are disabled
     const chosenButtons = screen.getAllByRole('button').filter(b => b.className.includes('wo-word'));
     chosenButtons.forEach(btn => expect(btn).toBeDisabled());
+  });
+});
+
+describe('WordOrder collab', () => {
+  it('broadcasts chosen array when a word is picked', async () => {
+    const pair = createMemoryTransportPair('R');
+    const teacher = createSessionManager({ transport: pair.teacher, clientVersion: '1.0' });
+    const student = createSessionManager({ transport: pair.student, clientVersion: '1.0' });
+    await teacher.start({ as: 'teacher', roomCode: 'R' });
+    await student.join({ roomCode: 'R' });
+    await Promise.resolve();
+    const received = [];
+    student.on(MSG.INPUT, (p) => received.push(p));
+    const ex = { type: 'word-order', words: ['is','cat','the','Oxford'], answer: ['Oxford','is','the','cat'] };
+    render(
+      <SessionProvider manager={teacher}>
+        <CollabScope exerciseIndex={0}>
+          <WordOrder exercise={ex} onAnswer={() => {}} />
+        </CollabScope>
+      </SessionProvider>
+    );
+    fireEvent.click(screen.getByText('Oxford'));
+    await new Promise(r => setTimeout(r, 10));
+    expect(received.some(p => p.field === 'chosen' && Array.isArray(p.value) && p.value.includes('Oxford'))).toBe(true);
   });
 });

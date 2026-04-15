@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import './Exercise.css';
+import { useCollabField } from '../../collab/useCollabField.jsx';
 
 function shuffle(arr) {
   const a = [...arr];
@@ -16,8 +17,8 @@ export default function Matching({ exercise, onAnswer }) {
   const [rights, setRights] = useState(() =>
     shuffle(exercise.pairs.map((p, i) => ({ id: i, value: p.right })))
   );
-  const [selectedLeft, setSelectedLeft] = useState(null);
-  const [matched, setMatched] = useState({}); // left -> right value
+  const [selectedLeft, setSelectedLeft] = useCollabField('selectedLeft', null);
+  const [matched, setMatched] = useCollabField('matched', {}); // left -> right value
   const [wrongId, setWrongId] = useState(null); // id of wrong right item
   const [done, setDone] = useState(false);
 

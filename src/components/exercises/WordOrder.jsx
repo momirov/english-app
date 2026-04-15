@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import './Exercise.css';
 import useFeedback from '../../hooks/useFeedback';
+import { useCollabField } from '../../collab/useCollabField.jsx';
 
 export default function WordOrder({ exercise, onAnswer }) {
-  const [available, setAvailable] = useState([...exercise.words]);
-  const [chosen, setChosen] = useState([]);
+  const [available, setAvailable] = useCollabField('available', [...exercise.words]);
+  const [chosen, setChosen] = useCollabField('chosen', []);
   const [lastCorrect, setLastCorrect] = useState(false);
 
   const { revealed, waitingForAck, handleReveal, handleAck } = useFeedback({

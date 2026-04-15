@@ -1,9 +1,9 @@
-import { useState } from 'react';
 import './Exercise.css';
 import useFeedback from '../../hooks/useFeedback';
+import { useCollabField } from '../../collab/useCollabField.jsx';
 
 export default function TrueFalse({ exercise, onAnswer }) {
-  const [selected, setSelected] = useState(null);
+  const [selected, setSelected] = useCollabField('selected', null);
 
   const { revealed, waitingForAck, handleReveal, handleAck } = useFeedback({
     onAnswer: () => onAnswer(selected === exercise.answer, {
