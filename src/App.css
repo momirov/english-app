@@ -492,6 +492,15 @@ button {
   background: #e9ecef;
 }
 
+/* ── Session toolbar ── */
+.session-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  padding: 8px 12px;
+  border-bottom: 1px solid #eee;
+  background: #fafafa;
+}
+
 /* ── Responsive ── */
 @media (max-width: 480px) {
   .unit-grid {

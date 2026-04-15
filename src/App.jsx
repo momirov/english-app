@@ -7,6 +7,7 @@ import UnitPage from './components/UnitPage.jsx';
 import LessonPage from './components/LessonPage.jsx';
 import SessionJoinPrompt from './components/collab/SessionJoinPrompt.jsx';
 import SessionBanner from './components/collab/SessionBanner.jsx';
+import SessionHostControls from './components/collab/SessionHostControls.jsx';
 import { useSession } from './collab/useSession.jsx';
 import { persistSessionMeta, clearSessionMeta, readSessionMeta } from './collab/recovery.js';
 
@@ -110,6 +111,9 @@ export default function App() {
   return (
     <>
       <SessionBanner />
+      <div className="session-toolbar">
+        <SessionHostControls />
+      </div>
       {pendingJoinCode && (
         <SessionJoinPrompt
           roomCode={pendingJoinCode}
