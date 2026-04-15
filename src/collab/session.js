@@ -29,6 +29,18 @@ export function createSessionManager({ transport, clientVersion }) {
   const statusSubs = new Set();
   const typedSubs = new Map(); // type -> Set<fn>
 
+  const fieldStore = new Map(); // "idx:field" -> value
+  const submittedStore = new Map(); // idx -> { answer, correct }
+
+  function recordInput(p) {
+    if (!p || typeof p.exerciseIndex !== 'number' || typeof p.field !== 'string') return;
+    fieldStore.set(`${p.exerciseIndex}:${p.field}`, p.value);
+  }
+  function recordSubmit(p) {
+    if (!p || typeof p.exerciseIndex !== 'number') return;
+    submittedStore.set(p.exerciseIndex, { answer: p.answer, correct: p.correct });
+  }
+
   function setStatus(next) {
     if (status === next) return;
     status = next;
@@ -53,11 +65,16 @@ export function createSessionManager({ transport, clientVersion }) {
       if (wasConnecting && handle) {
         handle.send(makeMessage(MSG.HELLO, { role, clientVersion }));
       }
-      // Send snapshot to peer (only on first hello, when we were still connecting).
-      if (wasConnecting && snapshotBuilder && handle) {
+      // Send snapshot on every HELLO (handles initial handshake + reconnects).
+      if (snapshotBuilder && handle) {
         try {
-          const snap = snapshotBuilder();
-          if (snap) handle.send(makeMessage(MSG.SNAPSHOT, snap));
+          const extra = snapshotBuilder() || {};
+          const snap = {
+            ...extra,
+            fields: Object.fromEntries(fieldStore),
+            submitted: Object.fromEntries(submittedStore),
+          };
+          handle.send(makeMessage(MSG.SNAPSHOT, snap));
         } catch (e) {
           console.warn('[collab] snapshot builder error', e);
         }
@@ -76,6 +93,31 @@ export function createSessionManager({ transport, clientVersion }) {
         teardown('idle');
       }, 30_000);
       return;
+    }
+    // Record state-changing messages from peer.
+    if (m.type === MSG.INPUT) recordInput(m.payload);
+    if (m.type === MSG.SUBMIT) recordSubmit(m.payload);
+    // Handle incoming SNAPSHOT: re-emit fields/submitted as synthetic events.
+    if (m.type === MSG.SNAPSHOT) {
+      if (m.payload?.fields && typeof m.payload.fields === 'object') {
+        for (const [key, value] of Object.entries(m.payload.fields)) {
+          const [idxStr, field] = key.split(':');
+          const exerciseIndex = Number(idxStr);
+          if (!Number.isNaN(exerciseIndex) && field) {
+            emit(MSG.INPUT, { exerciseIndex, field, value });
+            fieldStore.set(key, value);
+          }
+        }
+      }
+      if (m.payload?.submitted && typeof m.payload.submitted === 'object') {
+        for (const [idxStr, entry] of Object.entries(m.payload.submitted)) {
+          const exerciseIndex = Number(idxStr);
+          if (Number.isNaN(exerciseIndex) || !entry) continue;
+          emit(MSG.SUBMIT, { exerciseIndex, ...entry });
+          submittedStore.set(exerciseIndex, entry);
+        }
+      }
+      // Still dispatch the snapshot payload for any app-level listeners.
     }
     emit(m.type, m.payload);
   }
@@ -139,6 +181,8 @@ export function createSessionManager({ transport, clientVersion }) {
       teardown('idle');
     },
     broadcast(type, payload) {
+      if (type === MSG.INPUT) recordInput(payload);
+      if (type === MSG.SUBMIT) recordSubmit(payload);
       if (!handle) return;
       handle.send(makeMessage(type, payload));
     },
