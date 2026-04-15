@@ -39,5 +39,6 @@ describe('protocol', () => {
     expect(isValidMessage({ v: 2, type: 'hello', payload: {} })).toBe(false);
     expect(isValidMessage({ v: 1, type: 'hello' })).toBe(false); // no payload
     expect(isValidMessage('string')).toBe(false);
+    expect(isValidMessage({ v: 1, type: 'hello', payload: [] })).toBe(false);
   });
 });

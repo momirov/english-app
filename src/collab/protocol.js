@@ -21,6 +21,6 @@ export function isValidMessage(m) {
   if (!m || typeof m !== 'object') return false;
   if (m.v !== PROTOCOL_VERSION) return false;
   if (typeof m.type !== 'string' || !KNOWN_TYPES.has(m.type)) return false;
-  if (!m.payload || typeof m.payload !== 'object') return false;
+  if (!m.payload || typeof m.payload !== 'object' || Array.isArray(m.payload)) return false;
   return true;
 }
