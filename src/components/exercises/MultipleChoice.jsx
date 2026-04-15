@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useCollabField } from '../../collab/useCollabField.jsx';
 import './Exercise.css';
 import useFeedback from '../../hooks/useFeedback';
 
 export default function MultipleChoice({ exercise, onAnswer }) {
-  const [selected, setSelected] = useState(null);
+  const [selected, setSelected] = useCollabField('selected', null);
 
   const { revealed, waitingForAck, handleReveal, handleAck } = useFeedback({
     onAnswer: () => onAnswer(selected === exercise.answer, {
