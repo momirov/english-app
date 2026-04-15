@@ -284,15 +284,16 @@ To reset all progress in the browser: `localStorage.removeItem('ep1_progress')`.
 
 ## Navigation
 
-There is no router. `App.jsx` holds `{ view, unitId, lessonId }` state:
+Navigation is URL-driven via [Wouter](https://github.com/molefrog/wouter) with hash routing. `App.jsx` defines:
 
 ```
-home  →  unit  →  lesson
-          ↑           |
-          └───────────┘ (back button)
+/                                → home (unit grid)
+/:unitId                         → unit page
+/:unitId/:lessonId               → lesson intro
+/:unitId/:lessonId/:exerciseIdx  → lesson, exercise N
 ```
 
-`view` is one of `'home'`, `'unit'`, `'lesson'`. Changing these values is the only navigation mechanism.
+These URLs are also how the realtime tutoring feature syncs navigation between teacher and student (see `src/collab/useNavSync.jsx`).
 
 ---
 
