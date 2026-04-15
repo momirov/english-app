@@ -51,4 +51,15 @@ describe('MemoryTransport', () => {
     teacher.send({ a: 1 });
     expect(handler).not.toHaveBeenCalled();
   });
+
+  it('send after close is a no-op', async () => {
+    const pair = createMemoryTransportPair('R');
+    const teacher = await pair.teacher.createRoom();
+    const student = await pair.student.joinRoom('R');
+    const received = vi.fn();
+    student.onMessage(received);
+    teacher.close();
+    teacher.send({ a: 1 });
+    expect(received).not.toHaveBeenCalled();
+  });
 });
