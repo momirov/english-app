@@ -501,6 +501,67 @@ button {
   background: #fafafa;
 }
 
+/* ── Session UI ── */
+.session-banner {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-align: center;
+}
+.session-banner.connecting { background: #fff3cd; color: #8a6d3b; }
+.session-banner.connected  { background: #d4edda; color: #155724; }
+.session-banner.peer-gone  { background: #fff3cd; color: #8a6d3b; }
+.session-banner.error      { background: #e2e3e5; color: #383d41; }
+
+.session-host-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px 12px;
+  background: #f7f7f8;
+  border: 1px solid #e3e3e3;
+  border-radius: 6px;
+  font-size: 0.85rem;
+}
+.session-url {
+  font-family: monospace;
+  word-break: break-all;
+  background: white;
+  padding: 6px 8px;
+  border: 1px solid #e3e3e3;
+  border-radius: 4px;
+}
+
+.session-join-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
+.session-join-card {
+  background: white;
+  padding: 24px;
+  border-radius: 8px;
+  max-width: 420px;
+  width: 90%;
+}
+.session-join-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+.session-join-actions .primary {
+  background: #2980b9;
+  color: white;
+}
+
 /* ── Responsive ── */
 @media (max-width: 480px) {
   .unit-grid {
