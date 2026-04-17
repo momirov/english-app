@@ -64,19 +64,19 @@ export const irregular = {
         {
           type: 'multiple-choice',
           question: 'I ___ an email to my teacher yesterday. (send)',
-          options: ['sent', 'sended', 'send', 'spent'],
+          options: ['sended', 'sent', 'send', 'spent'],
           answer: 'sent',
         },
         {
           type: 'multiple-choice',
           question: 'She ___ well last night after a long day. (sleep)',
-          options: ['slept', 'sleeped', 'sleep', 'met'],
+          options: ['met', 'sleep', 'slept', 'sleeped'],
           answer: 'slept',
         },
         {
           type: 'multiple-choice',
           question: 'We ___ a sandcastle on the beach. (build)',
-          options: ['built', 'builded', 'build', 'lost'],
+          options: ['lost', 'builded', 'build', 'built'],
           answer: 'built',
         },
         {
@@ -156,13 +156,13 @@ export const irregular = {
         {
           type: 'multiple-choice',
           question: 'He ___ the ball just before it hit the ground. (catch)',
-          options: ['caught', 'catched', 'catch', 'thought'],
+          options: ['thought', 'catched', 'caught', 'catch'],
           answer: 'caught',
         },
         {
           type: 'multiple-choice',
           question: 'My grandmother ___ me how to cook. (teach)',
-          options: ['taught', 'teached', 'teach', 'told'],
+          options: ['teached', 'teach', 'told', 'taught'],
           answer: 'taught',
         },
         {
@@ -242,7 +242,7 @@ export const irregular = {
         {
           type: 'multiple-choice',
           question: 'We ___ in the lake all afternoon. (swim)',
-          options: ['swam', 'swimmed', 'swim', 'sat'],
+          options: ['sat', 'swimmed', 'swam', 'swim'],
           answer: 'swam',
         },
         {
@@ -319,19 +319,19 @@ export const irregular = {
         {
           type: 'multiple-choice',
           question: 'She ___ a long letter to her friend. (write)',
-          options: ['wrote', 'writed', 'write', 'spoke'],
+          options: ['spoke', 'writed', 'write', 'wrote'],
           answer: 'wrote',
         },
         {
           type: 'multiple-choice',
           question: 'He ___ to the manager about the problem. (speak)',
-          options: ['spoke', 'speaked', 'speak', 'wore'],
+          options: ['speaked', 'spoke', 'speak', 'wore'],
           answer: 'spoke',
         },
         {
           type: 'multiple-choice',
           question: 'She ___ a beautiful red dress to the party. (wear)',
-          options: ['wore', 'weared', 'wear', 'broke'],
+          options: ['weared', 'wear', 'wore', 'broke'],
           answer: 'wore',
         },
         {
@@ -411,13 +411,13 @@ export const irregular = {
         {
           type: 'multiple-choice',
           question: 'We ___ to Paris last summer. (fly)',
-          options: ['flew', 'flied', 'fly', 'found'],
+          options: ['flied', 'flew', 'fly', 'found'],
           answer: 'flew',
         },
         {
           type: 'multiple-choice',
           question: 'She ___ her keys under the mat. (hide)',
-          options: ['hid', 'hided', 'hide', 'knew'],
+          options: ['hide', 'hided', 'hid', 'knew'],
           answer: 'hid',
         },
         {
@@ -513,13 +513,13 @@ export const irregular = {
         {
           type: 'multiple-choice',
           question: 'She ___ to school every day last year. (go)',
-          options: ['went', 'goed', 'go', 'did'],
+          options: ['goed', 'went', 'go', 'did'],
           answer: 'went',
         },
         {
           type: 'multiple-choice',
           question: 'I ___ pizza for dinner yesterday. (eat)',
-          options: ['ate', 'eated', 'eat', 'took'],
+          options: ['took', 'eat', 'eated', 'ate'],
           answer: 'ate',
         },
         {
