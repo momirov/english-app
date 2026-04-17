@@ -7,5 +7,6 @@ import { unit5 } from './unit5.js';
 import { unit6 } from './unit6.js';
 import { unit7 } from './unit7.js';
 import { unit8 } from './unit8.js';
+import { irregular } from './irregular.js';
 
-export const allUnits = [starter, unit1, unit2, unit3, unit4, unit5, unit6, unit7, unit8];
+export const allUnits = [starter, unit1, unit2, unit3, unit4, unit5, unit6, unit7, unit8, irregular];

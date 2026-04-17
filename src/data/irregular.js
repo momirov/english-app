@@ -1,0 +1,159 @@
+// src/data/irregular.js
+export const irregular = {
+  id: 'irregular',
+  number: null,
+  title: 'Irregular verbs',
+  color: '#34495e',
+  lessons: [
+    {
+      id: 'irregular-1',
+      type: 'vocabulary',
+      title: 'Verbs that add -t or -d',
+      canDo: 'I can use the past simple of common irregular verbs that end in -t or -d.',
+      exercises: [
+        {
+          type: 'flashcard',
+          cards: [
+            { front: 'send',  back: 'sent'  },
+            { front: 'spend', back: 'spent' },
+            { front: 'sleep', back: 'slept' },
+            { front: 'meet',  back: 'met'   },
+            { front: 'leave', back: 'left'  },
+            { front: 'lose',  back: 'lost'  },
+            { front: 'build', back: 'built' },
+            { front: 'learn', back: 'learnt / learned' },
+            { front: 'have',  back: 'had'   },
+            { front: 'say',   back: 'said'  },
+            { front: 'make',  back: 'made'  },
+          ],
+        },
+        {
+          type: 'matching',
+          pairs: [
+            { left: 'send',  right: 'sent'  },
+            { left: 'spend', right: 'spent' },
+            { left: 'sleep', right: 'slept' },
+            { left: 'meet',  right: 'met'   },
+            { left: 'leave', right: 'left'  },
+            { left: 'lose',  right: 'lost'  },
+            { left: 'build', right: 'built' },
+            { left: 'learn', right: 'learnt' },
+            { left: 'have',  right: 'had'   },
+            { left: 'say',   right: 'said'  },
+            { left: 'make',  right: 'made'  },
+          ],
+        },
+        {
+          type: 'grammar-table',
+          title: 'Past simple — verbs that add -t or -d',
+          promptLabel: 'Base form',
+          rows: [
+            { prompt: 'send',  answer: 'sent'  },
+            { prompt: 'spend', answer: 'spent' },
+            { prompt: 'sleep', answer: 'slept' },
+            { prompt: 'meet',  answer: 'met'   },
+            { prompt: 'leave', answer: 'left'  },
+            { prompt: 'lose',  answer: 'lost'  },
+            { prompt: 'build', answer: 'built' },
+            { prompt: 'learn', answer: 'learnt' },
+            { prompt: 'have',  answer: 'had'   },
+            { prompt: 'say',   answer: 'said'  },
+            { prompt: 'make',  answer: 'made'  },
+          ],
+        },
+        {
+          type: 'multiple-choice',
+          question: 'I ___ an email to my teacher yesterday. (send)',
+          options: ['sent', 'sended', 'send', 'spent'],
+          answer: 'sent',
+        },
+        {
+          type: 'multiple-choice',
+          question: 'She ___ well last night after a long day. (sleep)',
+          options: ['slept', 'sleeped', 'sleep', 'met'],
+          answer: 'slept',
+        },
+        {
+          type: 'multiple-choice',
+          question: 'We ___ a sandcastle on the beach. (build)',
+          options: ['built', 'builded', 'build', 'lost'],
+          answer: 'built',
+        },
+        {
+          type: 'fill-blank',
+          template: 'Last summer they ___ the old house. (leave)',
+          wordBank: ['left', 'leaved', 'leave', 'said'],
+          answer: 'left',
+        },
+        {
+          type: 'fill-blank',
+          template: 'I ___ my keys this morning. (lose)',
+          wordBank: ['lost', 'losed', 'lose', 'had'],
+          answer: 'lost',
+        },
+        {
+          type: 'fill-blank',
+          template: 'The chef ___ a delicious pizza for dinner. (make)',
+          wordBank: ['made', 'maked', 'make', 'learnt'],
+          answer: 'made',
+        },
+        {
+          type: 'word-order',
+          words:  ['new', 'he', 'a', 'language', 'learnt', '.'],
+          answer: ['He', 'learnt', 'a', 'new', 'language', '.'],
+        },
+        {
+          type: 'word-order',
+          words:  ['hello', 'she', 'said', '.'],
+          answer: ['She', 'said', 'hello', '.'],
+        },
+      ],
+    },
+    // --- Lessons 2-6 stubs (filled in Tasks 3-7) ---
+    {
+      id: 'irregular-2',
+      type: 'vocabulary',
+      title: 'Verbs ending in -ought, -aught, -old',
+      canDo: 'I can use the past simple of verbs that end in -ought, -aught, or -old.',
+      exercises: [
+        { type: 'flashcard', cards: [{ front: 'buy', back: 'bought' }] },
+      ],
+    },
+    {
+      id: 'irregular-3',
+      type: 'vocabulary',
+      title: 'Vowel change: i → a',
+      canDo: 'I can use the past simple of verbs that change i to a.',
+      exercises: [
+        { type: 'flashcard', cards: [{ front: 'begin', back: 'began' }] },
+      ],
+    },
+    {
+      id: 'irregular-4',
+      type: 'vocabulary',
+      title: 'Vowel change: e/ea → o',
+      canDo: 'I can use the past simple of verbs that change e or ea to o.',
+      exercises: [
+        { type: 'flashcard', cards: [{ front: 'write', back: 'wrote' }] },
+      ],
+    },
+    {
+      id: 'irregular-5',
+      type: 'vocabulary',
+      title: 'Mixed patterns: -ew, -ound, -id, no change',
+      canDo: 'I can use the past simple of verbs with less common patterns.',
+      exercises: [
+        { type: 'flashcard', cards: [{ front: 'know', back: 'knew' }] },
+      ],
+    },
+    {
+      id: 'irregular-6',
+      type: 'vocabulary',
+      title: 'Most common irregular verbs',
+      canDo: 'I can use the past simple of the most common irregular verbs.',
+      exercises: [
+        { type: 'flashcard', cards: [{ front: 'go', back: 'went' }] },
+      ],
+    },
+  ],
+};
