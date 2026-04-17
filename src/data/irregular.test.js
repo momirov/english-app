@@ -67,6 +67,7 @@ describe('irregular unit — exercise integrity', () => {
         expect(blanks).toBe(1);
         expect(ex.wordBank).toHaveLength(4);
         expect(ex.wordBank).toContain(ex.answer);
+        expect(new Set(ex.wordBank).size).toBe(4);
       }
     });
   });
@@ -76,6 +77,7 @@ describe('irregular unit — exercise integrity', () => {
       if (ex.type === 'multiple-choice') {
         expect(ex.options).toHaveLength(4);
         expect(ex.options).toContain(ex.answer);
+        expect(new Set(ex.options).size).toBe(4);
       }
     });
   });
@@ -92,9 +94,13 @@ describe('irregular unit — exercise integrity', () => {
     });
   });
 
-  it('grammar-table rows have non-empty prompt and answer strings', () => {
+  it('grammar-table has non-empty title, promptLabel, and row prompt/answer strings', () => {
     forEachExercise(ex => {
       if (ex.type === 'grammar-table') {
+        expect(typeof ex.title).toBe('string');
+        expect(ex.title.length).toBeGreaterThan(0);
+        expect(typeof ex.promptLabel).toBe('string');
+        expect(ex.promptLabel.length).toBeGreaterThan(0);
         ex.rows.forEach(r => {
           expect(typeof r.prompt).toBe('string');
           expect(r.prompt.length).toBeGreaterThan(0);
