@@ -202,7 +202,84 @@ export const irregular = {
       title: 'Vowel change: i → a',
       canDo: 'I can use the past simple of verbs that change i to a.',
       exercises: [
-        { type: 'flashcard', cards: [{ front: 'begin', back: 'began' }] },
+        {
+          type: 'flashcard',
+          cards: [
+            { front: 'begin', back: 'began' },
+            { front: 'drink', back: 'drank' },
+            { front: 'swim',  back: 'swam'  },
+            { front: 'sit',   back: 'sat'   },
+            { front: 'run',   back: 'ran'   },
+          ],
+        },
+        {
+          type: 'matching',
+          pairs: [
+            { left: 'begin', right: 'began' },
+            { left: 'drink', right: 'drank' },
+            { left: 'swim',  right: 'swam'  },
+            { left: 'sit',   right: 'sat'   },
+            { left: 'run',   right: 'ran'   },
+          ],
+        },
+        {
+          type: 'grammar-table',
+          title: 'Past simple — vowel change i → a',
+          promptLabel: 'Base form',
+          rows: [
+            { prompt: 'begin', answer: 'began' },
+            { prompt: 'drink', answer: 'drank' },
+            { prompt: 'swim',  answer: 'swam'  },
+            { prompt: 'sit',   answer: 'sat'   },
+            { prompt: 'run',   answer: 'ran'   },
+          ],
+        },
+        {
+          type: 'multiple-choice',
+          question: "The film ___ at 8 o'clock last night. (begin)",
+          options: ['begun', 'began', 'begined', 'begin'],
+          answer: 'began',
+        },
+        {
+          type: 'multiple-choice',
+          question: 'We ___ in the lake all afternoon. (swim)',
+          options: ['swam', 'swimmed', 'swim', 'sat'],
+          answer: 'swam',
+        },
+        {
+          type: 'multiple-choice',
+          question: 'He ___ five kilometres this morning. (run)',
+          options: ['ran', 'runned', 'run', 'drank'],
+          answer: 'ran',
+        },
+        {
+          type: 'fill-blank',
+          template: 'I ___ a glass of water with my lunch. (drink)',
+          wordBank: ['drank', 'drinked', 'drink', 'drunk'],
+          answer: 'drank',
+        },
+        {
+          type: 'fill-blank',
+          template: 'They ___ on the bench and waited. (sit)',
+          wordBank: ['sat', 'sitted', 'sit', 'ran'],
+          answer: 'sat',
+        },
+        {
+          type: 'fill-blank',
+          template: 'The story ___ with a dramatic scene. (begin)',
+          wordBank: ['began', 'beginned', 'begin', 'sat'],
+          answer: 'began',
+        },
+        {
+          type: 'word-order',
+          words:  ['the', 'pool', 'in', 'we', 'swam', '.'],
+          answer: ['We', 'swam', 'in', 'the', 'pool', '.'],
+        },
+        {
+          type: 'word-order',
+          words:  ['coffee', 'some', 'drank', 'he', '.'],
+          answer: ['He', 'drank', 'some', 'coffee', '.'],
+        },
       ],
     },
     {
