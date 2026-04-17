@@ -8,7 +8,11 @@ export default function UnitCard({ unit, onClick }) {
     <button className="unit-card" onClick={onClick} style={{ '--unit-color': unit.color }}>
       <div className="unit-card-header" style={{ background: unit.color }}>
         <span className="unit-number">
-          {unit.number === 0 ? 'Starter' : `Unit ${unit.number}`}
+          {unit.number === 0
+            ? 'Starter'
+            : unit.number == null
+              ? '\u00A0'
+              : `Unit ${unit.number}`}
         </span>
         {pct === 100 && <span className="unit-complete-badge">✓</span>}
       </div>
