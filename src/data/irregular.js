@@ -371,7 +371,84 @@ export const irregular = {
       title: 'Mixed patterns: -ew, -ound, -id, no change',
       canDo: 'I can use the past simple of verbs with less common patterns.',
       exercises: [
-        { type: 'flashcard', cards: [{ front: 'know', back: 'knew' }] },
+        {
+          type: 'flashcard',
+          cards: [
+            { front: 'know', back: 'knew'  },
+            { front: 'fly',  back: 'flew'  },
+            { front: 'find', back: 'found' },
+            { front: 'hide', back: 'hid'   },
+            { front: 'read', back: 'read (pronounced "red")' },
+          ],
+        },
+        {
+          type: 'matching',
+          pairs: [
+            { left: 'know', right: 'knew'  },
+            { left: 'fly',  right: 'flew'  },
+            { left: 'find', right: 'found' },
+            { left: 'hide', right: 'hid'   },
+            { left: 'read', right: 'read'  },
+          ],
+        },
+        {
+          type: 'grammar-table',
+          title: 'Past simple — mixed patterns',
+          promptLabel: 'Base form',
+          rows: [
+            { prompt: 'know', answer: 'knew'  },
+            { prompt: 'fly',  answer: 'flew'  },
+            { prompt: 'find', answer: 'found' },
+            { prompt: 'hide', answer: 'hid'   },
+            { prompt: 'read', answer: 'read'  },
+          ],
+        },
+        {
+          type: 'multiple-choice',
+          question: 'He ___ the answer immediately. (know)',
+          options: ['knew', 'knowed', 'know', 'flew'],
+          answer: 'knew',
+        },
+        {
+          type: 'multiple-choice',
+          question: 'We ___ to Paris last summer. (fly)',
+          options: ['flew', 'flied', 'fly', 'found'],
+          answer: 'flew',
+        },
+        {
+          type: 'multiple-choice',
+          question: 'She ___ her keys under the mat. (hide)',
+          options: ['hid', 'hided', 'hide', 'knew'],
+          answer: 'hid',
+        },
+        {
+          type: 'fill-blank',
+          template: 'I ___ my phone in the bag. (find)',
+          wordBank: ['found', 'finded', 'find', 'knew'],
+          answer: 'found',
+        },
+        {
+          type: 'fill-blank',
+          template: 'He ___ the whole book in one day. (read)',
+          wordBank: ['read', 'readed', 'reads', 'hid'],
+          answer: 'read',
+        },
+        {
+          type: 'fill-blank',
+          template: 'They ___ the answer was hard. (know)',
+          wordBank: ['knew', 'knowed', 'know', 'found'],
+          answer: 'knew',
+        },
+        {
+          type: 'word-order',
+          words:  ['read', 'i', 'book', 'a', '.'],
+          answer: ['I', 'read', 'a', 'book', '.'],
+        },
+        {
+          type: 'word-order',
+          words:  ['found', 'she', 'letter', 'the', '.'],
+          answer: ['She', 'found', 'the', 'letter', '.'],
+        },
       ],
     },
     {
