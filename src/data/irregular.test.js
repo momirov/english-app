@@ -130,6 +130,39 @@ describe('irregular unit — registration', () => {
   });
 });
 
-// This test is the final coverage gate. It is added in Task 8, not Task 2,
-// because Lessons 2-6 start as stubs and only reach full verb coverage after
-// Task 7. See Task 8 for the assertion.
+describe('irregular unit — verb coverage', () => {
+  it('flashcards across all 6 lessons cover exactly the 42-verb reference list', () => {
+    const flashcardFronts = irregular.lessons.flatMap(lesson =>
+      lesson.exercises
+        .filter(ex => ex.type === 'flashcard')
+        .flatMap(ex => ex.cards.map(c => c.front))
+    );
+    expect(new Set(flashcardFronts)).toEqual(new Set(EXPECTED_VERBS));
+    expect(flashcardFronts).toHaveLength(EXPECTED_VERBS.length); // 42 — no duplicates
+  });
+
+  it('matching pairs within each lesson use the same verbs as the flashcard in that lesson', () => {
+    irregular.lessons.forEach(lesson => {
+      const flashcard = lesson.exercises.find(ex => ex.type === 'flashcard');
+      const matching = lesson.exercises.find(ex => ex.type === 'matching');
+      if (!flashcard || !matching) return; // only relevant to fully-authored lessons
+      const flashFronts = new Set(flashcard.cards.map(c => c.front));
+      const matchLefts = new Set(matching.pairs.map(p => p.left));
+      expect(matchLefts).toEqual(flashFronts);
+    });
+  });
+
+  it('grammar-table prompts within each lesson cover all flashcard fronts (except be which may be split)', () => {
+    irregular.lessons.forEach(lesson => {
+      const flashcard = lesson.exercises.find(ex => ex.type === 'flashcard');
+      const table = lesson.exercises.find(ex => ex.type === 'grammar-table');
+      if (!flashcard || !table) return;
+      const flashFronts = flashcard.cards.map(c => c.front);
+      // Each flashcard front must appear in at least one table row's prompt
+      flashFronts.forEach(front => {
+        const appears = table.rows.some(r => r.prompt === front || r.prompt.startsWith(`${front} `));
+        expect(appears, `grammar-table of ${lesson.id} should include prompt for "${front}"`).toBe(true);
+      });
+    });
+  });
+});
