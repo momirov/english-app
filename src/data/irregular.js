@@ -109,7 +109,6 @@ export const irregular = {
         },
       ],
     },
-    // --- Lessons 2-6 stubs (filled in Tasks 3-7) ---
     {
       id: 'irregular-2',
       type: 'vocabulary',
