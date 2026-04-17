@@ -288,7 +288,81 @@ export const irregular = {
       title: 'Vowel change: e/ea → o',
       canDo: 'I can use the past simple of verbs that change e or ea to o.',
       exercises: [
-        { type: 'flashcard', cards: [{ front: 'write', back: 'wrote' }] },
+        {
+          type: 'flashcard',
+          cards: [
+            { front: 'write', back: 'wrote' },
+            { front: 'speak', back: 'spoke' },
+            { front: 'break', back: 'broke' },
+            { front: 'wear',  back: 'wore'  },
+          ],
+        },
+        {
+          type: 'matching',
+          pairs: [
+            { left: 'write', right: 'wrote' },
+            { left: 'speak', right: 'spoke' },
+            { left: 'break', right: 'broke' },
+            { left: 'wear',  right: 'wore'  },
+          ],
+        },
+        {
+          type: 'grammar-table',
+          title: 'Past simple — vowel change e/ea → o',
+          promptLabel: 'Base form',
+          rows: [
+            { prompt: 'write', answer: 'wrote' },
+            { prompt: 'speak', answer: 'spoke' },
+            { prompt: 'break', answer: 'broke' },
+            { prompt: 'wear',  answer: 'wore'  },
+          ],
+        },
+        {
+          type: 'multiple-choice',
+          question: 'She ___ a long letter to her friend. (write)',
+          options: ['wrote', 'writed', 'write', 'spoke'],
+          answer: 'wrote',
+        },
+        {
+          type: 'multiple-choice',
+          question: 'He ___ to the manager about the problem. (speak)',
+          options: ['spoke', 'speaked', 'speak', 'wore'],
+          answer: 'spoke',
+        },
+        {
+          type: 'multiple-choice',
+          question: 'She ___ a beautiful red dress to the party. (wear)',
+          options: ['wore', 'weared', 'wear', 'broke'],
+          answer: 'wore',
+        },
+        {
+          type: 'fill-blank',
+          template: 'The child ___ the window with a ball. (break)',
+          wordBank: ['broke', 'breaked', 'break', 'wrote'],
+          answer: 'broke',
+        },
+        {
+          type: 'fill-blank',
+          template: 'I ___ an email to the teacher. (write)',
+          wordBank: ['wrote', 'writed', 'write', 'wore'],
+          answer: 'wrote',
+        },
+        {
+          type: 'fill-blank',
+          template: 'They ___ French on holiday. (speak)',
+          wordBank: ['spoke', 'speaked', 'speak', 'broke'],
+          answer: 'spoke',
+        },
+        {
+          type: 'word-order',
+          words:  ['a', 'he', 'wore', 'coat', 'blue', '.'],
+          answer: ['He', 'wore', 'a', 'blue', 'coat', '.'],
+        },
+        {
+          type: 'word-order',
+          words:  ['wrote', 'book', 'she', 'a', '.'],
+          answer: ['She', 'wrote', 'a', 'book', '.'],
+        },
       ],
     },
     {
