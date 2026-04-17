@@ -116,7 +116,84 @@ export const irregular = {
       title: 'Verbs ending in -ought, -aught, -old',
       canDo: 'I can use the past simple of verbs that end in -ought, -aught, or -old.',
       exercises: [
-        { type: 'flashcard', cards: [{ front: 'buy', back: 'bought' }] },
+        {
+          type: 'flashcard',
+          cards: [
+            { front: 'buy',   back: 'bought'  },
+            { front: 'catch', back: 'caught'  },
+            { front: 'teach', back: 'taught'  },
+            { front: 'think', back: 'thought' },
+            { front: 'tell',  back: 'told'    },
+          ],
+        },
+        {
+          type: 'matching',
+          pairs: [
+            { left: 'buy',   right: 'bought'  },
+            { left: 'catch', right: 'caught'  },
+            { left: 'teach', right: 'taught'  },
+            { left: 'think', right: 'thought' },
+            { left: 'tell',  right: 'told'    },
+          ],
+        },
+        {
+          type: 'grammar-table',
+          title: 'Past simple — -ought / -aught / -old',
+          promptLabel: 'Base form',
+          rows: [
+            { prompt: 'buy',   answer: 'bought'  },
+            { prompt: 'catch', answer: 'caught'  },
+            { prompt: 'teach', answer: 'taught'  },
+            { prompt: 'think', answer: 'thought' },
+            { prompt: 'tell',  answer: 'told'    },
+          ],
+        },
+        {
+          type: 'multiple-choice',
+          question: 'They ___ a new car last month. (buy)',
+          options: ['bought', 'buyed', 'buy', 'caught'],
+          answer: 'bought',
+        },
+        {
+          type: 'multiple-choice',
+          question: 'He ___ the ball just before it hit the ground. (catch)',
+          options: ['caught', 'catched', 'catch', 'thought'],
+          answer: 'caught',
+        },
+        {
+          type: 'multiple-choice',
+          question: 'My grandmother ___ me how to cook. (teach)',
+          options: ['taught', 'teached', 'teach', 'told'],
+          answer: 'taught',
+        },
+        {
+          type: 'fill-blank',
+          template: 'I ___ the film was amazing. (think)',
+          wordBank: ['thought', 'thinked', 'think', 'taught'],
+          answer: 'thought',
+        },
+        {
+          type: 'fill-blank',
+          template: 'She ___ us a long story. (tell)',
+          wordBank: ['told', 'telled', 'tell', 'bought'],
+          answer: 'told',
+        },
+        {
+          type: 'fill-blank',
+          template: 'He ___ fish by the lake. (catch)',
+          wordBank: ['caught', 'catched', 'catch', 'told'],
+          answer: 'caught',
+        },
+        {
+          type: 'word-order',
+          words:  ['bought', 'bread', 'i', 'some', '.'],
+          answer: ['I', 'bought', 'some', 'bread', '.'],
+        },
+        {
+          type: 'word-order',
+          words:  ['thought', 'hard', 'he', 'about', 'it', '.'],
+          answer: ['He', 'thought', 'hard', 'about', 'it', '.'],
+        },
       ],
     },
     {
