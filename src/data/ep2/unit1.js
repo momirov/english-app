@@ -56,12 +56,6 @@ export const ep2Unit1 = {
         },
         {
           type: 'fill-blank',
-          template: 'My dad listens to the radio ___ the car on the way to work.',
-          wordBank: ['in', 'on', 'at', 'to'],
-          answer: 'in',
-        },
-        {
-          type: 'fill-blank',
           template: 'At break time we play football in the ___.',
           wordBank: ['playground', 'countryside', 'bed', 'car'],
           answer: 'playground',
@@ -86,7 +80,7 @@ export const ep2Unit1 = {
         },
         {
           type: 'fill-blank',
-          template: "It's sunny, so the children are playing ___ in the garden with their friends.",
+          template: "It's sunny, so let's play ___ today.",
           wordBank: ['outdoors', 'indoors', 'alone', 'online'],
           answer: 'outdoors',
         },
@@ -118,6 +112,12 @@ export const ep2Unit1 = {
             "I don't spend more than ten minutes on the phone.",
           ],
           answer: 'I spend too much time on the phone.',
+        },
+        {
+          type: 'fill-blank',
+          template: 'Do you spend ___ time in your room? – No, not really.',
+          wordBank: ['much', 'many', 'most', 'all'],
+          answer: 'much',
         },
         {
           type: 'fill-blank',
@@ -160,9 +160,9 @@ export const ep2Unit1 = {
               answer: 'on Sundays',
             },
             {
-              question: 'How does GamerJack feel about his family rule now?',
-              options: ['He quite likes it.', 'He still hates it.', 'He wants to change it.'],
-              answer: 'He quite likes it.',
+              question: 'What does GamerJack think about the Sunday rule now?',
+              options: ["It's quite nice.", "It's still terrible.", 'It needs to change.'],
+              answer: "It's quite nice.",
             },
             {
               question: 'Why is Priya unhappy?',
@@ -176,7 +176,7 @@ export const ep2Unit1 = {
             },
             {
               question: "When doesn't Tom's mum allow phones?",
-              options: ['in his room', 'at dinner', 'at school', 'in the car'],
+              options: ['in the morning', 'at dinner', 'at school', 'in the car'],
               answer: 'at dinner',
             },
             {
@@ -374,7 +374,8 @@ export const ep2Unit1 = {
           cards: [
             { front: 'watch TV', back: '📺 look at programmes on television' },
             { front: 'stay in bed late', back: '😴 get up later than usual, e.g. at the weekend' },
-            { front: 'blog online', back: '💻 write posts about your life or interests on a website' },
+            { front: 'go online', back: '💻 use the internet' },
+            { front: 'blog', back: '✍️ write posts about your life or interests on a website' },
             { front: 'listen to music', back: '🎧 enjoy songs on your phone, the radio, etc.' },
             { front: 'collect things', back: '🗃️ keep many things of the same type, e.g. stamps or cards' },
             { front: 'make videos', back: '🎥 film things and put the clips together' },
@@ -397,8 +398,8 @@ export const ep2Unit1 = {
             { left: 'collect', right: 'things' },
             { left: 'play', right: 'an instrument' },
             { left: 'meet', right: 'friends' },
-            { left: 'do', right: 'sport' },
-            { left: 'make', right: 'videos' },
+            { left: 'go', right: 'dancing' },
+            { left: 'stay', right: 'in bed late' },
             { left: 'write', right: 'stories' },
             { left: 'listen', right: 'to music' },
           ],
@@ -429,7 +430,7 @@ export const ep2Unit1 = {
         },
         {
           type: 'fill-blank',
-          template: 'Sara ___ online about films and books. Lots of people read her posts.',
+          template: 'Sara ___ about films and books. Lots of people read her posts.',
           wordBank: ['blogs', 'bakes', 'collects', 'meets'],
           answer: 'blogs',
         },
@@ -442,8 +443,14 @@ export const ep2Unit1 = {
         {
           type: 'fill-blank',
           template: 'On Sundays I stay in bed ___ and get up at eleven o\'clock.',
-          wordBank: ['late', 'early', 'long'],
+          wordBank: ['late', 'early', 'long', 'soon'],
           answer: 'late',
+        },
+        {
+          type: 'fill-blank',
+          template: 'I ___ online to chat with my friends after dinner.',
+          wordBank: ['go', 'do', 'make', 'play'],
+          answer: 'go',
         },
         {
           type: 'fill-blank',
@@ -497,9 +504,15 @@ export const ep2Unit1 = {
         },
         {
           type: 'fill-blank',
-          template: "___ your parents work at the weekend? – No, they don't.",
-          wordBank: ['Do', 'Does', 'Are', 'Is'],
-          answer: 'Do',
+          template: '___ go to concerts? – Yes, I do. I love live music.',
+          wordBank: ['Do you ever', 'How often', 'What time', 'Why'],
+          answer: 'Do you ever',
+        },
+        {
+          type: 'fill-blank',
+          template: "___ do you get up on Sundays? – At ten o'clock.",
+          wordBank: ['What time', 'How often', 'Who', 'Why'],
+          answer: 'What time',
         },
         {
           type: 'fill-blank',
@@ -518,12 +531,6 @@ export const ep2Unit1 = {
           template: '___ do you go swimming? – Twice a week.',
           wordBank: ['How often', 'Where', 'Who', 'Why'],
           answer: 'How often',
-        },
-        {
-          type: 'fill-blank',
-          template: '___ do you meet your friends? – In the park near my house.',
-          wordBank: ['Where', 'When', 'Who', 'Why'],
-          answer: 'Where',
         },
         {
           type: 'fill-blank',
@@ -714,6 +721,11 @@ export const ep2Unit1 = {
           answer: false,
         },
         {
+          type: 'true-false',
+          statement: "We use 'too' at the end of affirmative sentences.",
+          answer: true,
+        },
+        {
           type: 'fill-blank',
           template: 'I play basketball ___ I go swimming.',
           wordBank: ['and', 'also', 'too'],
@@ -721,7 +733,7 @@ export const ep2Unit1 = {
         },
         {
           type: 'fill-blank',
-          template: 'I like reading. I ___ like writing stories.',
+          template: "I like reading. I'm ___ into writing stories.",
           wordBank: ['also', 'and', 'too'],
           answer: 'also',
         },
@@ -742,12 +754,6 @@ export const ep2Unit1 = {
           question: 'Which sentence is correct?',
           options: ['I enjoy too painting.', 'I enjoy also painting.', 'I also enjoy painting.', 'I enjoy painting and.'],
           answer: 'I also enjoy painting.',
-        },
-        {
-          type: 'multiple-choice',
-          question: 'Which sentence is correct?',
-          options: ["I'm too into music.", "I'm into music, too.", "I'm into too music."],
-          answer: "I'm into music, too.",
         },
         {
           type: 'word-order',
