@@ -113,8 +113,8 @@ export const ep2Unit4 = {
         },
         {
           type: 'word-order',
-          words: ['the', 'hold', 'flag', 'your', 'in', 'left', 'hand', '.'],
-          answer: ['Hold', 'the', 'flag', 'in', 'your', 'left', 'hand', '.'],
+          words: ['this', 'hold', 'flag', 'your', 'above', 'head', '.'],
+          answer: ['Hold', 'this', 'flag', 'above', 'your', 'head', '.'],
         },
       ],
     },
@@ -128,14 +128,14 @@ export const ep2Unit4 = {
           type: 'reading-comprehension',
           passage:
             'A hero in the rain\n\n' +
-            "A teenager's photo of a volunteer and a frightened horse travels around the world.\n\n" +
-            'Last November, heavy rain fell for five days in the north of England. The river in the small town of Elmford was rising fast, and the water was very close to many houses. Groups of volunteers were helping families to leave their homes.\n\n' +
-            "Jo Patel was one of these volunteers. Jo was working with a rescue team in Mill Lane when a neighbour ran up to them. 'There's a horse in the field behind my house, and it can't get out!' he said. The team followed him. The water was coming up to the horse's chest, and the poor animal was shaking with fear.\n\n" +
-            "Jo walked slowly into the water and held the horse's head. 'Bring a rope!' Jo yelled to the others. Fifteen-year-old Maya Reed was standing on a wall next to the field. She was filming the rescue on her phone. 'Jo was speaking quietly to the horse the whole time,' said Maya. 'After a few minutes, it wasn't fighting any more.' Half an hour later, the horse was safe on high ground.\n\n" +
+            "A teenager's photo of a frightened horse travels around the world.\n\n" +
+            'Fifteen-year-old Maya Reed never planned to take a famous photo. Last November, it rained for five days in her small town of Elmford, in the north of England. The river was rising fast, and the water was very close to many houses. Lots of people were leaving their homes.\n\n' +
+            "On the third day, a man ran out into Mill Lane. 'There's a horse in the field behind my house, and it can't get out!' he shouted. A rescue team arrived a few minutes later. Everyone in the team was a volunteer, and a local builder called Jo Patel was at the front. The water was coming up to the horse's chest, and the poor animal was shaking with fear.\n\n" +
+            "Jo walked slowly into the water and held the horse's head. 'Bring a rope!' Jo yelled to the others. At that moment, Maya was standing on a wall next to the field, and she was filming everything on her phone. 'Jo was speaking quietly to the horse the whole time,' she said. 'After a few minutes, it wasn't fighting any more.' Half an hour later, the horse was safe on high ground.\n\n" +
             "That evening, Maya posted a photo from her video online. By the next morning, people in Australia, Brazil and Japan were sharing it. Now Jo gets letters from all over the world. 'Elmford is my home town, and I love it,' says Jo. 'I wasn't trying to be a hero. I was just helping my neighbours.'",
           questions: [
             {
-              question: 'Why were volunteers helping families to leave their homes?',
+              question: 'Why were lots of people in Elmford leaving their homes?',
               options: [
                 'There was a big fire in the town.',
                 'The river water was very close to the houses.',
@@ -145,12 +145,12 @@ export const ep2Unit4 = {
             },
             {
               question: 'Where was the horse when the team found it?',
-              options: ["in a field behind a neighbour's house", 'on high ground', 'in the river next to a bridge'],
-              answer: "in a field behind a neighbour's house",
+              options: ['on high ground', "in a field behind a man's house", 'in the river next to a bridge'],
+              answer: "in a field behind a man's house",
             },
             {
               question: 'Who yelled for a rope?',
-              options: ['the neighbour', 'Maya', 'Jo'],
+              options: ['the man from Mill Lane', 'Maya', 'Jo'],
               answer: 'Jo',
             },
             {
@@ -164,7 +164,7 @@ export const ep2Unit4 = {
             },
             {
               question: 'How did the photo travel around the world?',
-              options: ['Maya posted it online.', 'Jo sent it to a newspaper.', 'The neighbour emailed it to friends.'],
+              options: ['Maya posted it online.', 'Jo sent it to a newspaper.', 'The man from Mill Lane emailed it to friends.'],
               answer: 'Maya posted it online.',
             },
             {
@@ -191,31 +191,31 @@ export const ep2Unit4 = {
         {
           type: 'fill-blank',
           template: 'Our school is very ___ to my house. I can walk there in two minutes.',
-          wordBank: ['close', 'team', 'yelled', 'volunteer'],
+          wordBank: ['close', 'far', 'angry', 'kind'],
           answer: 'close',
         },
         {
           type: 'fill-blank',
           template: "My mum is a ___ at the animal centre. She works there every Saturday, but they don't pay her.",
-          wordBank: ['volunteer', 'team', 'home town', 'close'],
+          wordBank: ['volunteer', 'team', 'visitor', 'customer'],
           answer: 'volunteer',
         },
         {
           type: 'fill-blank',
           template: 'I was born in Leeds. It is my ___, and all my family still live there.',
-          wordBank: ['home town', 'team', 'volunteer', 'close'],
+          wordBank: ['home town', 'team', 'volunteer', 'holiday'],
           answer: 'home town',
         },
         {
           type: 'fill-blank',
           template: 'Our basketball ___ won every match this year.',
-          wordBank: ['team', 'volunteer', 'home town', 'close'],
+          wordBank: ['team', 'volunteer', 'home town', 'court'],
           answer: 'team',
         },
         {
           type: 'fill-blank',
-          template: "The teacher ___ 'Stop!' when the boy ran towards the road.",
-          wordBank: ['yelled', 'volunteer', 'team', 'close'],
+          template: "The teacher ___ 'Stop!' so loudly that everyone in the street heard her.",
+          wordBank: ['yelled', 'whispered', 'wrote', 'smiled'],
           answer: 'yelled',
         },
         {
@@ -233,7 +233,7 @@ export const ep2Unit4 = {
       exercises: [
         {
           type: 'grammar-table',
-          title: "Past continuous: write was / were + -ing form (negative short forms, e.g. wasn't working)",
+          title: "Past continuous: write only was / were + the -ing form, without the subject (negative short forms, e.g. wasn't working)",
           promptLabel: 'Subject + verb',
           rows: [
             { prompt: 'I + work (+)', answer: 'was working' },
@@ -317,8 +317,8 @@ export const ep2Unit4 = {
         },
         {
           type: 'word-order',
-          words: ['was', 'the', 'dog', 'sleeping', 'on', 'sofa', 'the', '.'],
-          answer: ['The', 'dog', 'was', 'sleeping', 'on', 'the', 'sofa', '.'],
+          words: ['wearing', 'sister', "wasn't", 'a', 'my', 'coat', '.'],
+          answer: ['My', 'sister', "wasn't", 'wearing', 'a', 'coat', '.'],
         },
         {
           type: 'word-order',
@@ -501,9 +501,9 @@ export const ep2Unit4 = {
         },
         {
           type: 'fill-blank',
-          template: 'While we ___ along the beach, we found an old bottle.',
-          wordBank: ['were walking', 'was walking', 'are walking', 'walking'],
-          answer: 'were walking',
+          template: 'Who ___ to Ben after class? – Lucy was.',
+          wordBank: ['was talking', 'were talking', 'did talking', 'talking'],
+          answer: 'was talking',
         },
         {
           type: 'fill-blank',
@@ -519,9 +519,9 @@ export const ep2Unit4 = {
         },
         {
           type: 'fill-blank',
-          template: 'We suddenly ___ a famous actor in the street while we were visiting London.',
-          wordBank: ['saw', 'were seeing', 'see', 'seeing'],
-          answer: 'saw',
+          template: 'My cousin ___ her passport while she was travelling in Italy.',
+          wordBank: ['lost', 'was losing', 'lose', 'losing'],
+          answer: 'lost',
         },
         {
           type: 'fill-blank',
@@ -670,9 +670,15 @@ export const ep2Unit4 = {
         },
         {
           type: 'fill-blank',
-          template: 'There was a group of people ___ they were trying to catch a runaway dog.',
+          template: 'There was a group of people ___ they were trying to catch a lost dog.',
           wordBank: ['and', 'after', 'as soon as'],
           answer: 'and',
+        },
+        {
+          type: 'fill-blank',
+          template: 'There ___ two firefighters on the roof when I arrived.',
+          wordBank: ['were', 'was', 'are', 'be'],
+          answer: 'were',
         },
         {
           type: 'fill-blank',
@@ -688,9 +694,9 @@ export const ep2Unit4 = {
         },
         {
           type: 'fill-blank',
-          template: 'My phone fell out of my pocket ___ I was running for the bus.',
-          wordBank: ['while', 'during', 'after'],
-          answer: 'while',
+          template: 'The dog ran away ___ we opened the gate.',
+          wordBank: ['when', 'while', 'during'],
+          answer: 'when',
         },
         {
           type: 'fill-blank',
