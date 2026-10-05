@@ -1,6 +1,11 @@
-# English Plus 1 — Learning Webapp
+# English Plus — Learning Webapp
 
-Interactive exercises for the **English Plus 1 (2nd Edition)** coursebook by Ben Wetz (Oxford University Press). A1–A2 level.
+Interactive exercises for the **English Plus (2nd Edition)** coursebooks (Oxford University Press):
+
+- **English Plus 1** — Ben Wetz. A1–A2.
+- **English Plus 2** — Ben Wetz & Diana Pye. A2.
+
+The home screen is a book picker; each book has its own unit grid. Book 2 example sentences and reading texts are original — word lists, grammar rules and key phrases follow the book.
 
 ## Quick start
 
@@ -10,7 +15,7 @@ npm run dev       # http://localhost:5173
 npm run build     # production build → dist/
 ```
 
-No backend, no auth. All progress is stored in `localStorage` under the key `ep1_progress`.
+No backend, no auth. All progress for both books is stored in `localStorage` under the key `ep1_progress` (name kept for backward compatibility).
 
 ---
 
@@ -19,21 +24,29 @@ No backend, no auth. All progress is stored in `localStorage` under the key `ep1
 ```
 src/
   main.jsx              entry point
-  App.jsx               navigation state machine (home | unit | lesson)
+  App.jsx               routes (wouter, hash location) — book picker → units → lesson
   App.css               all global styles
   index.css             minimal reset (body margin only)
 
   data/
-    index.js            exports allUnits array — import order = display order
-    starter.js          Starter unit
-    unit1.js … unit8.js Units 1–8
+    books.js            book registry (order = display order), findBook, legacy URL mapping
+    index.js            Book 1 units: exports allUnits — import order = display order
+    starter.js          Book 1 Starter unit
+    unit1.js … unit8.js Book 1 Units 1–8
+    irregular.js        Irregular verbs (shared by both books)
+    ep2/
+      index.js          Book 2 units: exports ep2Units — import order = display order
+      starter.js, unit1.js … unit8.js
+      ep2.test.js       Book 2 data-integrity tests
 
   hooks/
     useProgress.js      read/write localStorage; streak logic
 
   components/
     Header.jsx          sticky header with back button + streak badge
-    UnitGrid.jsx        home screen — grid of unit cards
+    BookGrid.jsx        home screen — book picker
+    BookCard.jsx        single book card with overall progress
+    UnitGrid.jsx        one book's grid of unit cards
     UnitCard.jsx        single card with color header + progress bar
     UnitPage.jsx        lesson list for one unit
     LessonPage.jsx      intro screen → exercise flow → score screen
@@ -71,7 +84,7 @@ export const unitN = {
 };
 ```
 
-Register a new unit by importing it in `src/data/index.js` and adding it to `allUnits`.
+Register a new unit by importing it in the book's unit list: Book 1 → `src/data/index.js` (`allUnits`), Book 2 → `src/data/ep2/index.js` (`ep2Units`). Book 2 lesson ids must be prefixed `ep2-` (e.g. `ep2-unit3-grammar1`) so they never collide with Book 1 ids in the shared progress store.
 
 ### Lesson shape
 
@@ -264,6 +277,7 @@ export const allUnits = [starter, unit1, /* ... */ unit8, unit9];
 | `markLesson(lessonId, score, total)` | Saves a lesson result and updates streak |
 | `getLessonProgress(lessonId)` | Returns `{ completed, score, total }` for one lesson |
 | `getUnitPercent(unitId, lessons)` | Returns 0–100 completion % for a unit |
+| `getBookPercent(units)` | Returns 0–100 completion % across all of a book's lessons |
 
 Progress shape in localStorage (`ep1_progress`):
 
@@ -284,156 +298,60 @@ To reset all progress in the browser: `localStorage.removeItem('ep1_progress')`.
 
 ## Navigation
 
-There is no router. `App.jsx` holds `{ view, unitId, lessonId }` state:
+Routing uses [wouter](https://github.com/molefrog/wouter) with hash location (`src/main.jsx`):
 
-```
-home  →  unit  →  lesson
-          ↑           |
-          └───────────┘ (back button)
-```
-
-`view` is one of `'home'`, `'unit'`, `'lesson'`. Changing these values is the only navigation mechanism.
-
----
-
-## Current content status
-
-### Starter (color: `#8e44ad`)
-
-| Lesson ID | Title | Type | Exercises |
-|---|---|---|---|
-| `starter-hobbies` | Hobbies and free time | vocabulary | 2 (flashcard, matching) |
-| `starter-be` | The verb "be" | grammar | 6 (grammar-table, fill-blank ×3, MC ×2) |
-| `starter-possessives` | Possessive adjectives | grammar | 5 (grammar-table, MC ×2, fill-blank ×2) |
-| `starter-adjectives` | Adjectives | vocabulary | 4 (MC ×3, matching) |
-| `starter-countries` | Countries and nationalities | vocabulary | 3 (matching, MC ×2) |
-
-**Total: 5 lessons, 20 exercises**
-
----
-
-### Unit 1 — Towns and cities (color: `#2980b9`)
-
-| Lesson ID | Title | Type | Exercises |
-|---|---|---|---|
-| `unit1-vocab1` | Places in a town or city | vocabulary | 4 (flashcard, matching, MC ×2) |
-| `unit1-grammar1` | there is / there are | grammar | 7 (fill-blank ×4, true-false ×2, MC) |
-| `unit1-grammar2` | Comparatives | grammar | 6 (MC ×3, word-order ×2, fill-blank) |
-
-**Total: 3 lessons, 17 exercises**
-
----
-
-### Unit 2 — Days (color: `#27ae60`)
-
-| Lesson ID | Title | Type | Exercises |
-|---|---|---|---|
-| `unit2-vocab1` | Daily routines | vocabulary | 3 (flashcard, matching, MC) |
-| `unit2-grammar1` | Present simple | grammar | 6 (fill-blank ×3, MC ×2, true-false) |
-| `unit2-grammar2` | Adverbs of frequency | grammar | 6 (MC ×3, true-false ×2, word-order) |
-
-**Total: 3 lessons, 15 exercises**
-
----
-
-### Unit 3 — Wild life (color: `#d35400`)
-
-| Lesson ID | Title | Type | Exercises |
-|---|---|---|---|
-| `unit3-vocab1` | Animals | vocabulary | 3 (matching, MC ×2) |
-| `unit3-grammar1` | Superlatives | grammar | 5 (fill-blank ×2, MC ×2, word-order) |
-| `unit3-grammar2` | can for ability | grammar | 6 (true-false ×3, MC ×2, fill-blank) |
-
-**Total: 3 lessons, 14 exercises**
-
----
-
-### Unit 4 — Learning world (color: `#c0392b`) ★ most expanded
-
-| Lesson ID | Title | Type | Exercises |
-|---|---|---|---|
-| `unit4-vocab1` | School subjects | vocabulary | 4 (flashcard, MC ×2, matching) |
-| `unit4-grammar1` | Present continuous — affirmative | grammar | 10 (grammar-table, fill-blank ×3, MC ×2, true-false ×2, word-order ×2) |
-| `unit4-grammar2` | Questions in the present continuous | grammar | 10 (MC ×3, word-order ×3, fill-blank ×2, true-false ×2) |
-| `unit4-grammar3` | Present continuous — negatives & spelling | grammar | 11 (grammar-table, fill-blank ×3, MC ×3, matching, true-false ×2, word-order) |
-| `unit4-grammar4` | Present continuous vs present simple | grammar | 11 (flashcard, MC ×4, true-false ×2, matching, fill-blank ×2, word-order) |
-
-**Total: 5 lessons, 46 exercises**
-
----
-
-### Unit 5 — Food and health (color: `#16a085`)
-
-| Lesson ID | Title | Type | Exercises |
-|---|---|---|---|
-| `unit5-vocab1` | Food | vocabulary | 3 (flashcard, matching, MC) |
-| `unit5-grammar1` | Countable and uncountable nouns | grammar | 5 (MC ×2, true-false ×2, matching) |
-| `unit5-grammar2` | much, many, a lot of | grammar | 7 (fill-blank ×3, MC ×2, true-false ×2) |
-
-**Total: 3 lessons, 15 exercises**
-
----
-
-### Unit 6 — Sport (color: `#8e44ad`)
-
-| Lesson ID | Title | Type | Exercises |
-|---|---|---|---|
-| `unit6-vocab1` | Sports | vocabulary | 3 (matching, MC ×2) |
-| `unit6-grammar1` | Past simple — regular verbs | grammar | 6 (fill-blank ×3, word-order ×2, MC) |
-| `unit6-vocab2` | Irregular verbs | vocabulary | 4 (flashcard, matching, fill-blank ×2) |
-
-**Total: 3 lessons, 13 exercises**
-
----
-
-### Unit 7 — Growing up (color: `#e67e22`)
-
-| Lesson ID | Title | Type | Exercises |
-|---|---|---|---|
-| `unit7-vocab1` | Describing people | vocabulary | 4 (flashcard, MC ×2, matching) |
-| `unit7-grammar1` | Object pronouns | grammar | 5 (fill-blank ×3, grammar-table, MC) |
-| `unit7-grammar2` | Past simple questions | grammar | 6 (word-order ×2, MC ×2, fill-blank, true-false) |
-
-**Total: 3 lessons, 15 exercises**
-
----
-
-### Unit 8 — Going away (color: `#2c3e50`)
-
-| Lesson ID | Title | Type | Exercises |
-|---|---|---|---|
-| `unit8-vocab1` | Holiday vocabulary | vocabulary | 4 (matching, MC ×2, flashcard) |
-| `unit8-grammar1` | be going to | grammar | 6 (fill-blank ×3, MC, word-order, true-false) |
-| `unit8-grammar2` | will / won't | grammar | 7 (MC ×2, true-false ×2, fill-blank ×2, word-order) |
-
-**Total: 3 lessons, 17 exercises**
-
----
-
-## Overall totals
-
-| | Units | Lessons | Exercises |
-|---|---|---|---|
-| **Current** | 9 (Starter + 1–8) | 33 | 172 |
-
-Exercise type breakdown across the whole app:
-
-| Type | Count |
+| URL | Screen |
 |---|---|
-| multiple-choice | 55 |
-| fill-blank | 41 |
-| true-false | 29 |
-| word-order | 18 |
-| matching | 15 |
-| flashcard | 9 |
-| grammar-table | 5 |
+| `#/` | book picker |
+| `#/:bookId` | unit grid (`ep1` or `ep2`) |
+| `#/:bookId/:unitId` | lesson list |
+| `#/:bookId/:unitId/:lessonId[/:exerciseIdx]` | lesson |
+
+Old Book 1 links without a book segment (e.g. `#/unit5/unit5-vocab1/2`) redirect to `#/ep1/...`. Unknown units redirect to the book; unknown lessons redirect to their unit.
+
+---
+
+## Current content
+
+### English Plus 1
+
+| Unit | Title | Lessons | Exercises |
+|---|---|---|---|
+| Starter | Starter Unit | 5 | 20 |
+| 1 | Towns and cities | 3 | 17 |
+| 2 | Days | 3 | 15 |
+| 3 | Wild life | 3 | 14 |
+| 4 | Learning world | 8 | 76 |
+| 5 | Food and health | 6 | 53 |
+| 6 | Sport | 8 | 55 |
+| 7 | Growing up | 6 | 54 |
+| 8 | Going away | 3 | 17 |
+
+### English Plus 2
+
+Each unit has 7 lessons following the book: vocabulary, reading, language focus, vocabulary 2, language focus 2, speaking (key phrases), writing (key phrases + language point). The Starter unit has 4.
+
+| Unit | Title | Lessons | Exercises |
+|---|---|---|---|
+| Starter | Starter unit | 4 | 60 |
+| 1 | My time | 7 | 96 |
+| 2 | Communication | 7 | 95 |
+| 3 | The past | 7 | 96 |
+| 4 | In the picture | 7 | 96 |
+| 5 | Achieve | 7 | 95 |
+| 6 | Survival | 7 | 91 |
+| 7 | Music | 7 | 97 |
+| 8 | Scary | 7 | 97 |
+
+### Shared
+
+| Section | Lessons | Exercises |
+|---|---|---|
+| Irregular verbs | 6 | 66 |
 
 ---
 
 ## Known gaps / suggested next work
 
-- **Units 1–3, 5–8** each have only 3 lessons and 13–17 exercises — they could be expanded the same way Unit 4 was. A good target is 5 lessons and ~40 exercises per unit.
-- **Listening / Speaking / Writing lessons** — none yet. These could use `true-false` or `multiple-choice` exercises based on short text passages or dialogue transcripts.
-- **Review lessons** at the end of each unit (type `'review'`) — a mixed-exercise set recycling vocabulary and grammar from all lessons in that unit.
-- **Unit 6 color** (`#8e44ad`) conflicts with Starter (same purple). Consider changing Unit 6 to a different colour, e.g. `#d81b60` (pink-red).
-- **Starter `starter-be` grammar table** — the expected answers are just `am`/`is`/`are` but the table header already says "affirmative". Consider splitting into separate affirmative + negative tables.
+- **Book 1 Units 1–3 and 8** have only 3 lessons each — they could be expanded the same way Units 4–7 were.
+- **Grammar-table answers** are compared exactly (case-insensitive). Curly apostrophes from phone keyboards (`don’t`) don't match `don't`; normalising apostrophes in `GrammarTable.jsx` would fix this.
