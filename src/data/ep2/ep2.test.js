@@ -3,7 +3,7 @@ import { ep2Units } from './index.js';
 import { allUnits as ep1Units } from '../index.js';
 
 // Grows by one id per content task.
-const EXPECTED_UNIT_IDS = [];
+const EXPECTED_UNIT_IDS = ['starter'];
 
 const STARTER_SUFFIXES = ['vocab1', 'grammar1', 'vocab2', 'grammar2'];
 const UNIT_SUFFIXES = ['vocab1', 'reading', 'grammar1', 'vocab2', 'grammar2', 'speaking', 'writing'];
