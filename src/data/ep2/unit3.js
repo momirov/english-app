@@ -67,15 +67,9 @@ export const ep2Unit3 = {
         },
         {
           type: 'fill-blank',
-          template: "This old phone doesn't work, and I can't call anybody with it. It's ___.",
-          wordBank: ['useless', 'useful', 'alive', 'popular'],
-          answer: 'useless',
-        },
-        {
-          type: 'fill-blank',
-          template: 'Everybody at school likes Mia, and she has got lots of friends. She is very ___.',
-          wordBank: ['popular', 'unpopular', 'dead', 'enormous'],
-          answer: 'popular',
+          template: 'The food in that café was ___. The soup was cold and the bread was old.',
+          wordBank: ['awful', 'brave', 'alive', 'kind'],
+          answer: 'awful',
         },
         {
           type: 'fill-blank',
@@ -100,6 +94,12 @@ export const ep2Unit3 = {
           template: "I'm really ___ football. I play it every day after school.",
           wordBank: ['into', 'love', 'admire', 'mind'],
           answer: 'into',
+        },
+        {
+          type: 'fill-blank',
+          template: "I really ___ my grandma's chocolate cake. It's my favourite food in the world!",
+          wordBank: ['love', 'into', 'mind', 'quite'],
+          answer: 'love',
         },
         {
           type: 'fill-blank',
@@ -330,8 +330,8 @@ export const ep2Unit3 = {
         },
         {
           type: 'word-order',
-          words: ["wasn't", 'good', 'there', 'café', 'a', '.'],
-          answer: ['There', "wasn't", 'a', 'good', 'café', '.'],
+          words: ["wasn't", 'lift', 'there', 'a', '.'],
+          answer: ['There', "wasn't", 'a', 'lift', '.'],
         },
       ],
     },
@@ -344,7 +344,7 @@ export const ep2Unit3 = {
         {
           type: 'flashcard',
           cards: [
-            { front: 'come', back: '🚶 came – move to the place where you are now' },
+            { front: 'come', back: '🚶 came – move towards the speaker or to this place, e.g. come home' },
             { front: 'eat', back: '🍽️ ate – put food in your mouth and swallow it' },
             { front: 'explore', back: '🧭 explored – go around a new place to learn about it' },
             { front: 'feel', back: '🤒 felt – have a feeling, e.g. happy, tired or sick' },
@@ -389,12 +389,6 @@ export const ep2Unit3 = {
             { prompt: 'visit', answer: 'visited' },
             { prompt: 'watch', answer: 'watched' },
           ],
-        },
-        {
-          type: 'multiple-choice',
-          question: 'Which past form is irregular?',
-          options: ['looked', 'stayed', 'got', 'helped'],
-          answer: 'got',
         },
         {
           type: 'multiple-choice',
@@ -452,9 +446,21 @@ export const ep2Unit3 = {
         },
         {
           type: 'fill-blank',
-          template: 'We ___ the city on bikes and found some great cafés.',
-          wordBank: ['explored', 'stayed', 'felt', 'came'],
-          answer: 'explored',
+          template: 'We ___ lunch at a café by the river.',
+          wordBank: ['had', 'met', 'saw', 'left'],
+          answer: 'had',
+        },
+        {
+          type: 'fill-blank',
+          template: 'At the zoo, we ___ two baby elephants with their mother.',
+          wordBank: ['saw', 'went', 'came', 'felt'],
+          answer: 'saw',
+        },
+        {
+          type: 'fill-blank',
+          template: 'Last summer we ___ to Scotland by train.',
+          wordBank: ['went', 'saw', 'met', 'had'],
+          answer: 'went',
         },
       ],
     },
@@ -566,8 +572,8 @@ export const ep2Unit3 = {
         },
         {
           type: 'word-order',
-          words: ['eat', "didn't", 'breakfast', 'brother', 'his', 'my', '.'],
-          answer: ['My', 'brother', "didn't", 'eat', 'his', 'breakfast', '.'],
+          words: ['eat', "didn't", 'breakfast', 'brother', 'any', 'my', '.'],
+          answer: ['My', 'brother', "didn't", 'eat', 'any', 'breakfast', '.'],
         },
       ],
     },
@@ -702,14 +708,9 @@ export const ep2Unit3 = {
         },
         {
           type: 'multiple-choice',
-          question: 'Which order of sequencing words is correct for a story?',
-          options: [
-            'first → then → after that → finally',
-            'finally → then → first → after that',
-            'then → first → finally → after that',
-            'after that → finally → first → then',
-          ],
-          answer: 'first → then → after that → finally',
+          question: 'Which two sequencing words start and end a story?',
+          options: ['Finally … First', 'First … Finally', 'Then … First', 'Finally … After that'],
+          answer: 'First … Finally',
         },
         {
           type: 'true-false',
@@ -730,7 +731,7 @@ export const ep2Unit3 = {
         },
         {
           type: 'fill-blank',
-          template: 'I opened my presents and ___ we had a big chocolate cake.',
+          template: 'We watched a film and ___ we went for a pizza.',
           wordBank: ['then', 'first', 'but', 'because'],
           answer: 'then',
         },
@@ -742,14 +743,14 @@ export const ep2Unit3 = {
         },
         {
           type: 'fill-blank',
-          template: 'At seven o\'clock, my cousins ___ for the party.',
+          template: 'At midday, the bride and groom ___ at the restaurant.',
           wordBank: ['arrived', 'arrive', 'arrives', 'arriving'],
           answer: 'arrived',
         },
         {
           type: 'word-order',
-          words: ['will', 'forget', 'i', 'birthday', 'my', 'never', 'tenth', '.'],
-          answer: ['I', 'will', 'never', 'forget', 'my', 'tenth', 'birthday', '.'],
+          words: ['forget', "i'll", 'birthday', 'my', 'never', 'tenth', '.'],
+          answer: ["I'll", 'never', 'forget', 'my', 'tenth', 'birthday', '.'],
         },
         {
           type: 'word-order',
