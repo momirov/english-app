@@ -267,7 +267,7 @@ export const ep2Unit6 = {
         },
         {
           type: 'fill-blank',
-          template: 'If you take a torch, you ___ get lost in the dark.',
+          template: 'If you take a torch, you ___ fall over in the dark.',
           wordBank: ["won't", 'not', "doesn't", "isn't"],
           answer: "won't",
         },
@@ -324,8 +324,8 @@ export const ep2Unit6 = {
         },
         {
           type: 'word-order',
-          words: ['will', 'battery', 'if', 'what', 'dies', 'your', 'do', 'phone', 'you', ',', '?'],
-          answer: ['If', 'your', 'phone', 'battery', 'dies', ',', 'what', 'will', 'you', 'do', '?'],
+          words: ['will', 'battery', 'if', 'what', 'dies', 'your', 'do', 'phone', 'you', '?'],
+          answer: ['What', 'will', 'you', 'do', 'if', 'your', 'phone', 'battery', 'dies', '?'],
         },
       ],
     },
@@ -343,7 +343,7 @@ export const ep2Unit6 = {
             { front: 'knife', back: '🔪 a tool with a sharp metal edge for cutting' },
             { front: 'lighter', back: '🔥 a small object that makes a flame when you press it' },
             { front: 'map', back: '🗺️ a drawing of an area that shows roads, paths, rivers and towns' },
-            { front: 'mirror', back: '🪞 a piece of glass where you can see yourself' },
+            { front: 'mirror', back: '🪞 a piece of glass that you look in to see yourself' },
             { front: 'rope', back: '🪢 a long, thick, strong string' },
             { front: 'sleeping bag', back: '🛌 a warm bag that you sleep inside when you camp' },
             { front: 'tent', back: '⛺ a small shelter made of cloth and poles for camping' },
@@ -544,7 +544,7 @@ export const ep2Unit6 = {
           type: 'matching',
           pairs: [
             { left: 'Make sure that', right: 'your life jacket is on.' },
-            { left: "You'll be fine", right: 'if you stay with the group.' },
+            { left: "You'll be fine", right: 'if you hold on to the rail.' },
             { left: 'Try not to', right: 'panic.' },
             { left: "It's important to", right: 'listen to the instructor.' },
             { left: 'You need', right: 'to wear a helmet.' },
@@ -564,7 +564,7 @@ export const ep2Unit6 = {
         },
         {
           type: 'multiple-choice',
-          question: "You'll be fine ___ you follow the path.",
+          question: "You'll be fine ___ you keep your life jacket on.",
           options: ['that', 'if', 'to', 'so'],
           answer: 'if',
         },
@@ -610,8 +610,8 @@ export const ep2Unit6 = {
         },
         {
           type: 'word-order',
-          words: ['sure', 'rope', 'make', 'is', 'your', 'that', 'tight', '.'],
-          answer: ['Make', 'sure', 'that', 'your', 'rope', 'is', 'tight', '.'],
+          words: ['sure', 'rope', 'make', 'is', 'your', 'tight', '.'],
+          answer: ['Make', 'sure', 'your', 'rope', 'is', 'tight', '.'],
         },
       ],
     },
