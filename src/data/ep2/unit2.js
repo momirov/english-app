@@ -50,7 +50,7 @@ export const ep2Unit2 = {
         {
           type: 'fill-blank',
           template: 'I never write letters, but I always send my grandma a birthday ___.',
-          wordBank: ['card', 'landline', 'emoji', 'video chat'],
+          wordBank: ['card', 'landline', 'social media', 'video chat'],
           answer: 'card',
         },
         {
@@ -64,12 +64,6 @@ export const ep2Unit2 = {
           template: "My cousin lives in Australia, so we talk on ___ and we can see each other's faces.",
           wordBank: ['video chat', 'a landline', 'letters', 'text messages'],
           answer: 'video chat',
-        },
-        {
-          type: 'fill-blank',
-          template: 'I ___ photos and messages on social media every day.',
-          wordBank: ['post', 'have', 'call', 'dial'],
-          answer: 'post',
         },
         {
           type: 'multiple-choice',
@@ -108,6 +102,18 @@ export const ep2Unit2 = {
           answer: 'Not really.',
         },
         {
+          type: 'multiple-choice',
+          question: 'A: Do you still use a landline? B: ___ Nobody does now!',
+          options: ['Of course not.', 'Of course.', 'Me, too.', 'Neither am I.'],
+          answer: 'Of course not.',
+        },
+        {
+          type: 'multiple-choice',
+          question: "A: I'm surprised! B: ___ (B feels the same.)",
+          options: ['Neither am I.', 'Not really.', 'Me, too.', 'Of course not.'],
+          answer: 'Me, too.',
+        },
+        {
           type: 'fill-blank',
           template: 'I use social media every day. What ___ you?',
           wordBank: ['about', 'for', 'with', 'of'],
@@ -133,7 +139,7 @@ export const ep2Unit2 = {
             "So, are emojis a new language? Not really. But they are a fun way to add feelings to our messages, and they are here to stay.",
           questions: [
             {
-              question: 'What is the main topic of the second paragraph?',
+              question: "What is the main topic of the paragraph that starts 'First of all…'?",
               options: ['where emojis are from', 'why emojis are useful', 'emojis in homework'],
               answer: 'why emojis are useful',
             },
@@ -218,7 +224,7 @@ export const ep2Unit2 = {
         },
         {
           type: 'fill-blank',
-          template: 'English is an ___ language. People speak it in lots of countries.',
+          template: "Lots of countries use English. It's a really ___ language.",
           wordBank: ['international', 'creative', 'funny', 'colourful'],
           answer: 'international',
         },
@@ -358,7 +364,7 @@ export const ep2Unit2 = {
             { front: 'dial a number', back: '🔢 press the numbers on a phone to make a call' },
             { front: 'download a ringtone', back: '🎵 get a new sound for your phone from the internet' },
             { front: 'hang up', back: '📴 end a phone call' },
-            { front: 'leave a voicemail', back: '📼 record a message when someone doesn\'t answer' },
+            { front: 'leave a voicemail', back: '🎙️ record a message when someone doesn\'t answer' },
             { front: 'put on speakerphone', back: '🔊 make a call loud so that everybody in the room can hear' },
             { front: 'send a text message', back: '💬 write a short message on your phone and send it' },
             { front: 'top up your phone', back: '💳 add more money (credit) to your phone' },
@@ -397,7 +403,7 @@ export const ep2Unit2 = {
         },
         {
           type: 'fill-blank',
-          template: "Sam's phone is ___. He's talking to someone else.",
+          template: "Sam's line is ___. He's talking to someone else.",
           wordBank: ['engaged', 'free', 'credit', 'ringtone'],
           answer: 'engaged',
         },
@@ -536,7 +542,7 @@ export const ep2Unit2 = {
           type: 'multiple-choice',
           question: 'Which sentence is correct?',
           options: [
-            "I'm usually walking to school.",
+            'I usually walks to school.',
             'I usually walk to school.',
             'I usually walking to school.',
             'I am usually walk to school.',
@@ -545,7 +551,7 @@ export const ep2Unit2 = {
         },
         {
           type: 'multiple-choice',
-          question: '"Is your phone ringing?" Choose the correct short answer.',
+          question: '"Is the TV working?" Choose the correct short answer.',
           options: ["No, it doesn't.", 'No, it not.', "No, it isn't.", "No, it aren't."],
           answer: "No, it isn't.",
         },
@@ -665,7 +671,7 @@ export const ep2Unit2 = {
         },
         {
           type: 'fill-blank',
-          template: '___ in our class uses a landline. They all use mobile phones.',
+          template: '___ in our class uses a landline. They only use mobile phones.',
           wordBank: ['Nobody', 'Everybody', 'A few', 'Half'],
           answer: 'Nobody',
         },
@@ -728,9 +734,9 @@ export const ep2Unit2 = {
         },
         {
           type: 'fill-blank',
-          template: 'Lots of people read blogs. ___, only a few people write them.',
-          wordBank: ['However', 'But', 'Too'],
-          answer: 'However',
+          template: "Fourteen of the twenty students use emojis. That's more than ___ of the class.",
+          wordBank: ['half', 'nobody', 'everybody', 'a few'],
+          answer: 'half',
         },
         {
           type: 'multiple-choice',
