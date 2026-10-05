@@ -57,6 +57,7 @@ describe('App routing', () => {
   it('redirects legacy /unit5 to /ep1/unit5', () => {
     const loc = renderAt('/unit5');
     expect(current(loc)).toBe('/ep1/unit5');
+    expect(loc.history).toEqual(['/ep1/unit5']);
     expect(screen.getByRole('heading', { name: 'Food and health' })).toBeInTheDocument();
   });
 
@@ -73,5 +74,21 @@ describe('App routing', () => {
   it('unknown unit inside a book goes to that book', () => {
     const loc = renderAt('/ep2/unit99');
     expect(current(loc)).toBe('/ep2');
+  });
+
+  it('unknown lesson inside a valid unit goes to that unit', () => {
+    const loc = renderAt('/ep1/unit5/bogus');
+    expect(current(loc)).toBe('/ep1/unit5');
+  });
+
+  it('back from a lesson goes to its unit', async () => {
+    const loc = renderAt('/ep1/unit5/unit5-vocab1');
+    await userEvent.click(screen.getByLabelText('Go back'));
+    expect(current(loc)).toBe('/ep1/unit5');
+  });
+
+  it('redirects legacy /starter to /ep1/starter', () => {
+    const loc = renderAt('/starter');
+    expect(current(loc)).toBe('/ep1/starter');
   });
 });

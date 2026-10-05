@@ -55,7 +55,8 @@ function LessonRoute() {
   if (!book) return <LegacyRedirect />;
   const unit = book.units.find((u) => u.id === unitId);
   const lesson = unit?.lessons.find((l) => l.id === lessonId);
-  if (!unit || !lesson) return <Redirect to={`/${bookId}`} replace />;
+  if (!unit) return <Redirect to={`/${bookId}`} replace />;
+  if (!lesson) return <Redirect to={`/${bookId}/${unitId}`} replace />;
 
   let initialIdx;
   if (exerciseIdx !== undefined) {
@@ -87,7 +88,7 @@ export default function App() {
       <Route path="/:bookId/:unitId/:lessonId" component={LessonRoute} />
       <Route path="/:bookId/:unitId/:lessonId/:exerciseIdx" component={LessonRoute} />
       <Route>
-        <Redirect to="/" />
+        <Redirect to="/" replace />
       </Route>
     </Switch>
   );
