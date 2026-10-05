@@ -67,3 +67,11 @@ export function getUnitPercent(unitId, lessons) {
   const completed = lessons.filter(l => progress.lessons[l.id]?.completed).length;
   return Math.round((completed / lessons.length) * 100);
 }
+
+export function getBookPercent(units) {
+  const progress = getProgress();
+  const lessons = units.flatMap(u => u.lessons);
+  if (lessons.length === 0) return 0;
+  const completed = lessons.filter(l => progress.lessons[l.id]?.completed).length;
+  return Math.round((completed / lessons.length) * 100);
+}
