@@ -54,6 +54,12 @@ export const ep2Unit8 = {
         },
         {
           type: 'fill-blank',
+          template: 'Are you interested ___ old castles? There is a great one near our town.',
+          wordBank: ['in', 'at', 'on', 'of'],
+          answer: 'in',
+        },
+        {
+          type: 'fill-blank',
           template: 'My little cousin is scared ___ the dark, so he sleeps with a light on.',
           wordBank: ['of', 'at', 'in', 'on'],
           answer: 'of',
@@ -112,12 +118,6 @@ export const ep2Unit8 = {
           options: ['happily', 'happiness', 'happy', 'to happy'],
           answer: 'happy',
         },
-        {
-          type: 'multiple-choice',
-          question: 'Which question asks what frightens someone?',
-          options: ['What are you good at?', 'What are you keen on?', 'What are you interested in?', 'What are you scared of?'],
-          answer: 'What are you scared of?',
-        },
       ],
     },
     {
@@ -169,7 +169,7 @@ export const ep2Unit8 = {
               answer: "She isn't tall enough yet.",
             },
             {
-              question: "In the paragraph beginning 'Are these rides as risky as they look?', what does Mei Lin say?",
+              question: 'What does Mei Lin, the ride designer, say?',
               options: [
                 'The rides are more dangerous than they look.',
                 'Engineers should check the rides more often.',
@@ -285,7 +285,7 @@ export const ep2Unit8 = {
         },
         {
           type: 'fill-blank',
-          template: 'Kai has ___ a ticket for the ghost train.',
+          template: 'My brother has ___ a new skateboard with his birthday money.',
           wordBank: ['bought', 'buyed', 'buy', 'buying'],
           answer: 'bought',
         },
@@ -358,7 +358,7 @@ export const ep2Unit8 = {
           type: 'flashcard',
           cards: [
             { front: 'cut → cut → a cut', back: '🔪 to damage your skin with something sharp, e.g. a knife' },
-            { front: 'break → broken → a break', back: '🦴 to crack a bone, e.g. when you fall badly' },
+            { front: 'break → broken → a break', back: '🦴 to damage a bone so that it cracks or splits, e.g. when you fall badly' },
             { front: 'burn → burned → a burn', back: '🔥 to hurt your skin with something very hot' },
             { front: 'bruise → bruised → a bruise', back: '🟣 to get a dark mark on your skin after you hit something' },
             { front: 'injure → injured → an injury', back: '🤕 to hurt a part of your body, e.g. in an accident or playing sport' },
@@ -424,7 +424,7 @@ export const ep2Unit8 = {
         },
         {
           type: 'fill-blank',
-          template: "Cool a ___ under cool running water for 20 minutes. Don't put ice or butter on it.",
+          template: "Hold a ___ under cool running water for about 20 minutes. Don't put ice, butter or cream on it.",
           wordBank: ['burn', 'burned', 'bruise', 'break'],
           answer: 'burn',
         },
@@ -433,6 +433,12 @@ export const ep2Unit8 = {
           template: "Her ankle is badly ___. She can't walk on it for a few days.",
           wordBank: ['sprained', 'sprain', 'a sprain', 'spraining'],
           answer: 'sprained',
+        },
+        {
+          type: 'fill-blank',
+          template: "Don't worry. Your arm isn't ___. It's only bruised.",
+          wordBank: ['broken', 'break', 'a break', 'broke'],
+          answer: 'broken',
         },
         {
           type: 'multiple-choice',
@@ -462,14 +468,14 @@ export const ep2Unit8 = {
         {
           type: 'grammar-table',
           title:
-            "Write present perfect questions with ever, without '?', e.g. (he / ever / lose / his keys) → has he ever lost his keys",
+            "Complete the question. Type only have / has + the subject + ever + the past participle, e.g. ___ his keys? (he / ever / lose) → has he ever lost",
           promptLabel: 'Words',
           rows: [
-            { prompt: '(you / ever / ride / a camel)', answer: 'have you ever ridden a camel' },
-            { prompt: '(your sister / ever / break / her leg)', answer: 'has your sister ever broken her leg' },
-            { prompt: '(they / ever / eat / octopus)', answer: 'have they ever eaten octopus' },
-            { prompt: '(he / ever / win / a medal)', answer: 'has he ever won a medal' },
-            { prompt: '(Sam / ever / sleep / in a tent)', answer: 'has Sam ever slept in a tent' },
+            { prompt: '___ a camel? (you / ever / ride)', answer: 'have you ever ridden' },
+            { prompt: '___ her leg? (she / ever / break)', answer: 'has she ever broken' },
+            { prompt: '___ octopus? (they / ever / eat)', answer: 'have they ever eaten' },
+            { prompt: '___ a medal? (he / ever / win)', answer: 'has he ever won' },
+            { prompt: '___ in a tent? (we / ever / sleep)', answer: 'have we ever slept' },
           ],
         },
         {
@@ -509,7 +515,7 @@ export const ep2Unit8 = {
         },
         {
           type: 'fill-blank',
-          template: 'Has your grandad ___ been to hospital?',
+          template: 'Has your grandad ___ worked on a farm?',
           wordBank: ['ever', 'yet', 'did', 'still'],
           answer: 'ever',
         },
@@ -624,7 +630,7 @@ export const ep2Unit8 = {
         },
         {
           type: 'multiple-choice',
-          question: 'Your friend has burned a hand on a hot pan. What is the best thing to do first?',
+          question: 'Your friend has burned their hand on a hot pan. What is the best thing to do first?',
           options: [
             'Put butter on it.',
             'Hold it under cool running water.',
@@ -632,6 +638,12 @@ export const ep2Unit8 = {
             'Cover it with a thick cream.',
           ],
           answer: 'Hold it under cool running water.',
+        },
+        {
+          type: 'multiple-choice',
+          question: 'You see a friend sitting on the ground and holding one leg. What do you say first?',
+          options: ["It really hurts.", 'Are you OK?', "I can't move it at all.", "I've hurt my arm."],
+          answer: 'Are you OK?',
         },
         {
           type: 'fill-blank',
@@ -682,7 +694,7 @@ export const ep2Unit8 = {
         },
         {
           type: 'fill-blank',
-          template: 'Have you done anything ___ recently?',
+          template: 'Have you done anything ___ this weekend?',
           wordBank: ['exciting', 'excited', 'excite', 'excitement'],
           answer: 'exciting',
         },
@@ -711,9 +723,9 @@ export const ep2Unit8 = {
         },
         {
           type: 'multiple-choice',
-          question: 'Which word introduces a reason?',
-          options: ['so', 'then', 'because', 'and'],
-          answer: 'because',
+          question: "Choose the best last line: 'That's all my news. Write back soon! ___ Jamie'",
+          options: ['Bye.', "How's it going?", 'Thanks for your email.', 'Have you done anything exciting?'],
+          answer: 'Bye.',
         },
         {
           type: 'fill-blank',
@@ -729,14 +741,14 @@ export const ep2Unit8 = {
         },
         {
           type: 'fill-blank',
-          template: "I've got a big bruise on my leg ___ I fell over in the playground.",
+          template: 'We took a taxi ___ we missed the last bus.',
           wordBank: ['because', 'so', 'or', 'but'],
           answer: 'because',
         },
         {
           type: 'fill-blank',
-          template: "The doctor says my wrist is sprained, ___ I can't play volleyball this week.",
-          wordBank: ['so', 'because', 'or', 'but'],
+          template: 'The shop was closed, ___ we bought the cake at the supermarket.',
+          wordBank: ['so', 'because', 'or', 'until'],
           answer: 'so',
         },
         {
@@ -747,8 +759,8 @@ export const ep2Unit8 = {
         },
         {
           type: 'word-order',
-          words: ['raining', 'so', 'we', 'it', 'was', 'inside', 'stayed', ',', '.'],
-          answer: ['It', 'was', 'raining', ',', 'so', 'we', 'stayed', 'inside', '.'],
+          words: ['film', 'boring', 'so', 'we', 'the', 'was', 'home', 'went', 'early', ',', '.'],
+          answer: ['The', 'film', 'was', 'boring', ',', 'so', 'we', 'went', 'home', 'early', '.'],
         },
         {
           type: 'word-order',
