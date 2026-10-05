@@ -1,10 +1,10 @@
 import UnitCard from './UnitCard.jsx';
 import Header from './Header.jsx';
 
-export default function UnitGrid({ units, onSelectUnit }) {
+export default function UnitGrid({ title, units, onSelectUnit, onBack }) {
   return (
     <div className="page">
-      <Header title="English Plus 1" />
+      <Header title={title} onBack={onBack} />
       <main className="unit-grid-main">
         <p className="home-subtitle">Choose a unit to start learning</p>
         <div className="unit-grid">
