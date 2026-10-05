@@ -324,8 +324,8 @@ export const ep2Unit6 = {
         },
         {
           type: 'word-order',
-          words: ['will', 'battery', 'if', 'what', 'dies', 'your', 'do', 'phone', 'you', '?'],
-          answer: ['What', 'will', 'you', 'do', 'if', 'your', 'phone', 'battery', 'dies', '?'],
+          words: ['will', 'battery', 'if', 'what', 'dies', ',', 'your', 'do', 'phone', 'you', '?'],
+          answer: ['If', 'your', 'phone', 'battery', 'dies', ',', 'what', 'will', 'you', 'do', '?'],
         },
       ],
     },
