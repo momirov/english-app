@@ -18,10 +18,12 @@ export const ep2Starter = {
             { front: 'aunt', back: '👩 the sister of your mum or dad' },
             { front: 'uncle', back: '👨 the brother of your mum or dad' },
             { front: 'cousin', back: '🧒 the child of your aunt or uncle' },
-            { front: 'nephew', back: '👶 the son of your brother or sister' },
-            { front: 'niece', back: '👶 the daughter of your brother or sister' },
-            { front: 'son', back: '👦 a boy or man, when we talk about his parents' },
-            { front: 'daughter', back: '👧 a girl or woman, when we talk about her parents' },
+            { front: 'nephew', back: '👦 the son of your brother or sister' },
+            { front: 'niece', back: '👧 the daughter of your brother or sister' },
+            { front: 'son', back: '👦 a male child of a parent' },
+            { front: 'daughter', back: '👧 a female child of a parent' },
+            { front: 'mum', back: '👩 your mother' },
+            { front: 'dad', back: '👨 your father' },
             { front: 'child', back: '🧒 a young boy or girl; also a son or daughter' },
             { front: 'grandfather', back: '👴 the father of your mum or dad' },
             { front: 'grandmother', back: '👵 the mother of your mum or dad' },
@@ -137,13 +139,15 @@ export const ep2Starter = {
       exercises: [
         {
           type: 'grammar-table',
-          title: 'be – affirmative (full forms)',
+          title: 'be – affirmative and negative',
           promptLabel: 'Subject',
           rows: [
-            { prompt: 'I', answer: 'am' },
-            { prompt: 'you', answer: 'are' },
-            { prompt: 'he / she / it', answer: 'is' },
-            { prompt: 'we / they', answer: 'are' },
+            { prompt: 'I (+)', answer: 'am' },
+            { prompt: 'you / we / they (+)', answer: 'are' },
+            { prompt: 'he / she / it (+)', answer: 'is' },
+            { prompt: 'I (−) full form', answer: 'am not' },
+            { prompt: 'you / we / they (−) short form', answer: "aren't" },
+            { prompt: 'he / she / it (−) short form', answer: "isn't" },
           ],
         },
         {
@@ -164,12 +168,6 @@ export const ep2Starter = {
           type: 'true-false',
           statement: "'Its' (possessive) and 'it's' (it is) mean the same thing.",
           answer: false,
-        },
-        {
-          type: 'fill-blank',
-          template: 'My grandparents ___ from Ireland. They live in Dublin.',
-          wordBank: ['are', 'is', 'am', 'be'],
-          answer: 'are',
         },
         {
           type: 'fill-blank',
@@ -203,9 +201,15 @@ export const ep2Starter = {
         },
         {
           type: 'fill-blank',
-          template: "___'s your birthday? – It's in May.",
-          wordBank: ['When', 'Where', 'Who', 'How'],
-          answer: 'When',
+          template: "Is your sister at school? – No, she ___. She's at home.",
+          wordBank: ["isn't", "doesn't", "hasn't", "aren't"],
+          answer: "isn't",
+        },
+        {
+          type: 'fill-blank',
+          template: "___ are you today? – I'm fine, thanks.",
+          wordBank: ['How', 'Who', 'Where', 'What'],
+          answer: 'How',
         },
         {
           type: 'fill-blank',
@@ -260,6 +264,10 @@ export const ep2Starter = {
             { front: 'history', back: '🏛️ the subject about the past' },
             { front: 'geography', back: '🌍 the subject about countries, rivers and mountains' },
             { front: 'music', back: '🎵 the subject about songs and instruments' },
+            { front: 'science', back: '🧪 the subject about plants, animals, chemicals and how things work' },
+            { front: 'room', back: '🚪 a space in a building with walls, a floor and a door' },
+            { front: 'exercise', back: '✍️ a task in a book that helps you practise something' },
+            { front: 'book', back: '📚 a set of printed pages, e.g. your maths book' },
           ],
         },
         {
@@ -304,6 +312,12 @@ export const ep2Starter = {
           answer: 'notebook',
         },
         {
+          type: 'fill-blank',
+          template: 'Open your books and do ___ 3 on page 20.',
+          wordBank: ['exercise', 'room', 'lab', 'timetable'],
+          answer: 'exercise',
+        },
+        {
           type: 'multiple-choice',
           question: 'In which subject do you learn about the past?',
           options: ['maths', 'history', 'music', 'science'],
@@ -323,8 +337,8 @@ export const ep2Starter = {
         },
         {
           type: 'fill-blank',
-          template: 'There are about a ___ students in my school – that\'s 1,000!',
-          wordBank: ['thousand', 'thousands', 'hundred', 'million'],
+          template: 'Our school has got about a ___ (1,000) students and sixty teachers.',
+          wordBank: ['thousand', 'thousands', 'thousandth', 'thousands of'],
           answer: 'thousand',
         },
         {
@@ -355,7 +369,7 @@ export const ep2Starter = {
       exercises: [
         {
           type: 'grammar-table',
-          title: 'have got (negatives: short forms)',
+          title: 'have got (affirmative: full forms, negative: short forms)',
           promptLabel: 'Form',
           rows: [
             { prompt: 'I / you / we / they (+)', answer: 'have got' },
@@ -366,11 +380,13 @@ export const ep2Starter = {
         },
         {
           type: 'grammar-table',
-          title: 'there is / there are (full forms)',
+          title: 'there is / there are (affirmative: full forms, negative: short forms)',
           promptLabel: 'Form',
           rows: [
             { prompt: 'singular (+)', answer: 'there is' },
             { prompt: 'plural (+)', answer: 'there are' },
+            { prompt: 'singular (−)', answer: "there isn't" },
+            { prompt: 'plural (−)', answer: "there aren't" },
             { prompt: 'singular question', answer: 'is there' },
             { prompt: 'plural question', answer: 'are there' },
           ],
@@ -382,7 +398,7 @@ export const ep2Starter = {
         },
         {
           type: 'fill-blank',
-          template: 'My best friend ___ a new phone. It\'s really cool.',
+          template: 'My best friend ___ a new phone. He got it for his birthday.',
           wordBank: ['has got', 'have got', "hasn't got", 'is got'],
           answer: 'has got',
         },
@@ -412,8 +428,8 @@ export const ep2Starter = {
         },
         {
           type: 'fill-blank',
-          template: 'There ___ twenty-eight students in my class.',
-          wordBank: ['are', 'is', 'has', 'have'],
+          template: 'How many students ___ there in your class?',
+          wordBank: ['are', 'is', 'have', 'has'],
           answer: 'are',
         },
         {
