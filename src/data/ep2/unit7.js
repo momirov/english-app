@@ -74,12 +74,6 @@ export const ep2Unit7 = {
         },
         {
           type: 'fill-blank',
-          template: 'Mozart and Beethoven wrote ___ music.',
-          wordBank: ['classical', 'rap', 'electronic', 'reggae'],
-          answer: 'classical',
-        },
-        {
-          type: 'fill-blank',
           template: "My cousin makes ___ music on a laptop. He doesn't play any real instruments.",
           wordBank: ['electronic', 'folk', 'classical', 'traditional'],
           answer: 'electronic',
@@ -89,12 +83,6 @@ export const ep2Unit7 = {
           question: 'In this type of music, the singer speaks the words very fast to a beat. What is it?',
           options: ['folk', 'rap', 'classical', 'samba'],
           answer: 'rap',
-        },
-        {
-          type: 'fill-blank',
-          template: 'The ___ screamed and waved when the band came on stage.',
-          wordBank: ['fans', 'lyrics', 'views', 'vocals'],
-          answer: 'fans',
         },
         {
           type: 'fill-blank',
@@ -125,6 +113,18 @@ export const ep2Unit7 = {
           template: "Put this track on at the party. It's a good one for dancing ___.",
           wordBank: ['to', 'at', 'on', 'with'],
           answer: 'to',
+        },
+        {
+          type: 'fill-blank',
+          template: "I can't listen to heavy metal. All that shouting and those loud guitars! It's a bit too ___ for me.",
+          wordBank: ['heavy', 'catchy', 'good', 'cool'],
+          answer: 'heavy',
+        },
+        {
+          type: 'fill-blank',
+          template: "I don't really like the tune, but I love the ___. The singer has got a beautiful, strong voice.",
+          wordBank: ['vocals', 'drums', 'keyboard', 'video'],
+          answer: 'vocals',
         },
         {
           type: 'multiple-choice',
@@ -162,7 +162,7 @@ export const ep2Unit7 = {
             'Dreams and reality – a blog by Kit, 15\n\n' +
             "Last night I watched the final of Starlight Live, the TV talent show. My friend Ruby was in the audience, and she's still excited. 'One day I'm going to be on that stage,' she told me this morning. 'I'm going to be a star!'\n\n" +
             'I understand why she wants it. The show looks amazing: the bright lights, the screaming fans, the famous judges. And Ruby has got a beautiful voice. When she sings at school concerts, everyone goes quiet.\n\n' +
-            "But I think people forget about the reality of fame. My uncle played the bass in a band called The Paper Moons. Fifteen years ago, they had a hit with a song called 'Summer Rain'. For about six months, it was on the radio every day. Then people stopped buying their music, and the band split up. Now my uncle teaches guitar in a music shop, and he says he's much happier.\n\n" +
+            "But I think people forget about the reality of fame. My uncle played the bass in a band called The Paper Moons. Fifteen years ago, they had a hit with a song called 'Seven Purple Umbrellas'. For about six months, it was on the radio every day. Then people stopped buying their music, and the band split up. Now my uncle teaches guitar in a music shop, and he says he's much happier.\n\n" +
             "Here's my opinion. A talent show can make you famous for a few weeks, but it can't make you a good musician. Only hard work can do that. Most winners are forgotten after a year.\n\n" +
             "So what am I going to do? I'm not going to enter any talent shows. I'm going to write songs, practise every day and play small concerts with my friends. Maybe we won't be rich, but we'll enjoy the music.\n\n" +
             "And Ruby? She's going to audition for Starlight Live next spring. I think she'll do well, and I'm going to be there to support her. Maybe she'll prove me wrong!",
@@ -267,6 +267,18 @@ export const ep2Unit7 = {
           options: ['because', 'going to', 'want to', "isn't"],
           answer: 'because',
         },
+        {
+          type: 'multiple-choice',
+          question: "In song lyrics, 'wanna' means…",
+          options: ['going to', 'because', "isn't", 'want to'],
+          answer: 'want to',
+        },
+        {
+          type: 'multiple-choice',
+          question: "In song lyrics, 'ain't' means…",
+          options: ['want to', "isn't", 'because', 'going to'],
+          answer: "isn't",
+        },
       ],
     },
     {
@@ -277,12 +289,12 @@ export const ep2Unit7 = {
       exercises: [
         {
           type: 'grammar-table',
-          title: 'Complete the rules. Write one word: plans, predictions or base.',
+          title: 'Complete the rules. Write one word in each gap.',
           promptLabel: 'Rule',
           rows: [
             { prompt: 'We use be going to when we talk about ___ and intentions.', answer: 'plans' },
             { prompt: "We use will for ___, e.g. 'I think you'll win.'", answer: 'predictions' },
-            { prompt: 'After going to and will, we use the ___ form of the verb.', answer: 'base' },
+            { prompt: 'After going to and will, we use the base ___ of the verb, e.g. play.', answer: 'form' },
           ],
         },
         {
@@ -293,6 +305,12 @@ export const ep2Unit7 = {
         {
           type: 'true-false',
           statement: "'I'm going to learn the drums' is about a plan or intention.",
+          answer: true,
+        },
+        {
+          type: 'true-false',
+          statement:
+            'Study strategy: a good way to remember a grammar rule is to write your own example sentences in a notebook and test yourself every week.',
           answer: true,
         },
         {
@@ -383,11 +401,11 @@ export const ep2Unit7 = {
             { front: 'ambition → ambitious', back: '🚀 wanting very much to be successful' },
             { front: 'charm → charming', back: '😊 pleasant and easy to like' },
             { front: 'confidence → confident', back: '😎 feeling sure about yourself and your skills' },
-            { front: 'energy → energetic', back: '⚡ full of energy; not often tired' },
+            { front: 'energy → energetic', back: '⚡ active and not often tired' },
             { front: 'fame → famous', back: '🌟 known by lots of people' },
             { front: 'kindness → kind', back: '🤝 nice and helpful to other people' },
             { front: 'strength → strong', back: '🏋️ having a lot of power' },
-            { front: 'success → successful', back: '🏆 getting the result you want' },
+            { front: 'success → successful', back: '🏆 achieving what you wanted; doing well' },
             { front: 'talent → talented', back: '🎨 having a natural skill' },
             { front: 'weakness → weak', back: '🪫 not strong; not good at something' },
           ],
@@ -536,7 +554,7 @@ export const ep2Unit7 = {
         },
         {
           type: 'fill-blank',
-          template: "I ___ my guitar teacher at four o'clock tomorrow. It's in my calendar.",
+          template: "I ___ my guitar teacher at four o'clock tomorrow. It's in my diary.",
           wordBank: ['am meeting', 'meeting', 'am meet', 'meets'],
           answer: 'am meeting',
         },
@@ -634,7 +652,7 @@ export const ep2Unit7 = {
         {
           type: 'multiple-choice',
           question: 'A: I can put up the posters after school. B: That ___ be great, thanks!',
-          options: ['is', 'does', 'would', 'has'],
+          options: ['would', 'does', 'has', 'are'],
           answer: 'would',
         },
         {
@@ -704,7 +722,7 @@ export const ep2Unit7 = {
         },
         {
           type: 'fill-blank',
-          template: "If you're ___ reggae, then maybe this is for you.",
+          template: "If you're ___ reggae, you'll enjoy this track.",
           wordBank: ['into', 'in', 'on', 'about'],
           answer: 'into',
         },
@@ -722,12 +740,6 @@ export const ep2Unit7 = {
         },
         {
           type: 'fill-blank',
-          template: 'My aunt is a singer in a jazz band. ___ voice is amazing.',
-          wordBank: ['Her', 'She', 'His', 'It'],
-          answer: 'Her',
-        },
-        {
-          type: 'fill-blank',
           template: 'Have you heard the new single by Red Sky? ___ is really catchy.',
           wordBank: ['It', 'They', 'Its', 'Them'],
           answer: 'It',
@@ -740,9 +752,9 @@ export const ep2Unit7 = {
         },
         {
           type: 'fill-blank',
-          template: 'My grandad loves folk music. ___ listens to it every day.',
-          wordBank: ['He', 'His', 'Him', 'Her'],
-          answer: 'He',
+          template: 'My grandad loves folk music. ___ favourite instrument is the violin.',
+          wordBank: ['His', 'He', 'Him', 'Her'],
+          answer: 'His',
         },
         {
           type: 'fill-blank',
@@ -753,14 +765,21 @@ export const ep2Unit7 = {
         {
           type: 'multiple-choice',
           question:
-            "\"Echo Park's new album is out. The lyrics are clever, and they're easy to remember.\" What does 'they' refer to?",
-          options: ['the album', 'the lyrics', 'Echo Park'],
+            "\"Zigzag Lemon's new album is out. The lyrics are clever, and they're easy to remember.\" What does 'they' refer to?",
+          options: ['the album', 'the lyrics', 'Zigzag Lemon'],
           answer: 'the lyrics',
         },
         {
+          type: 'multiple-choice',
+          question:
+            "\"The new track by Velvet Kites has got a great beat. Fans of dance music will love this.\" What does 'this' refer to?",
+          options: ['dance music', 'Velvet Kites', 'the new track'],
+          answer: 'the new track',
+        },
+        {
           type: 'word-order',
-          words: ['lyrics', 'all', 'the', 'summer', 'about', 'are', '.'],
-          answer: ['The', 'lyrics', 'are', 'all', 'about', 'summer', '.'],
+          words: ['lyrics', 'the', 'summer', 'about', 'are', '.'],
+          answer: ['The', 'lyrics', 'are', 'about', 'summer', '.'],
         },
         {
           type: 'word-order',
