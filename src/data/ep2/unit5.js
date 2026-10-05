@@ -29,7 +29,7 @@ export const ep2Unit5 = {
             { front: 'hundred', back: '💯 100' },
             { front: 'half', back: '🌓 one of two equal parts (½)' },
             { front: 'quarter', back: '🍕 one of four equal parts (¼)' },
-            { front: 'fraction', back: '➗ a part of a whole number, e.g. ½ or ¾' },
+            { front: 'fraction', back: '➗ a number that is part of a whole, e.g. ½ or ¾' },
             { front: 'kilo', back: '⚖️ 1,000 grams (a kilogram)' },
             { front: 'ton', back: '🐘 a very heavy weight, about 1,000 kilos' },
             { front: 'metre', back: '📏 100 centimetres' },
@@ -77,12 +77,6 @@ export const ep2Unit5 = {
           template: 'There are about eight ___ people in the world.',
           wordBank: ['billion', 'million', 'thousand', 'hundred'],
           answer: 'billion',
-        },
-        {
-          type: 'fill-blank',
-          template: 'Half an hour is 30 minutes, and a ___ of an hour is 15 minutes.',
-          wordBank: ['quarter', 'half', 'decade', 'second'],
-          answer: 'quarter',
         },
         {
           type: 'fill-blank',
@@ -134,6 +128,12 @@ export const ep2Unit5 = {
           options: ["I've no idea.", 'I know that one.', 'Any ideas?', 'Have a guess!'],
           answer: 'I know that one.',
         },
+        {
+          type: 'multiple-choice',
+          question: "A: How heavy is a giraffe? B: I'm not sure. ___ about a ton.",
+          options: ['Any ideas?', 'Have a guess!', 'I reckon', 'I know that one.'],
+          answer: 'I reckon',
+        },
       ],
     },
     {
@@ -147,7 +147,7 @@ export const ep2Unit5 = {
           passage:
             'Your brain: questions and answers\n\n' +
             'How hard does my brain work? Harder than any other part of your body! Your brain is only about 2% of your body weight, but it uses about 20% of your energy. Hundreds of kilometres of tiny blood vessels carry blood to it day and night.\n\n' +
-            'What is it made of? Billions of cells. The most important ones are nerve cells, and an adult brain has about 86 billion of them. They send tiny electrical messages to each other all the time.\n\n' +
+            'What is it made of? Billions of cells. The best-known ones are nerve cells, and an adult brain has about 86 billion of them. They send tiny electrical messages to each other all the time.\n\n' +
             "Can my brain feel pain? Surprisingly, no. The brain itself can't feel pain, so doctors can sometimes operate on it while the patient is awake and talking.\n\n" +
             'Is my brain changing? Yes, all the time! When you learn something new, your brain makes new connections. In one famous study, scientists looked at London taxi drivers, who have to learn thousands of streets. A part of the brain that helps us find our way was larger in the drivers than in most other people.\n\n' +
             'How can I look after it? Sleep is one of the best things for your brain, because it helps you remember what you learned during the day. Students who sleep well often get better scores in tests. Exercise is good too: when you use your muscles, your heart works harder and sends more blood to your brain. Finally, try to eat fresh food. Some scientists think that certain food additives, like some artificial colours, make it harder for some children to concentrate.\n\n' +
@@ -306,6 +306,11 @@ export const ep2Unit5 = {
           answer: false,
         },
         {
+          type: 'true-false',
+          statement: 'We use the before superlative adjectives.',
+          answer: true,
+        },
+        {
           type: 'fill-blank',
           template: 'Our new flat is ___ than the old one. It has got two more bedrooms.',
           wordBank: ['bigger', 'biger', 'the biggest', 'more big'],
@@ -322,12 +327,6 @@ export const ep2Unit5 = {
           template: 'For me, physics is ___ than art.',
           wordBank: ['more difficult', 'difficulter', 'the most difficult', 'most difficult'],
           answer: 'more difficult',
-        },
-        {
-          type: 'fill-blank',
-          template: 'Who is ___ person in your family?',
-          wordBank: ['the funniest', 'funnier', 'the funnyest', 'more funny'],
-          answer: 'the funniest',
         },
         {
           type: 'fill-blank',
@@ -489,7 +488,7 @@ export const ep2Unit5 = {
       exercises: [
         {
           type: 'grammar-table',
-          title: "Write can, can't, could or couldn't. For a question, write the words without '?', e.g. can you swim",
+          title: "Write can, can't, could or couldn't. For a question, write the words without '?', e.g. can they dance",
           promptLabel: 'Time and form',
           rows: [
             { prompt: 'present, affirmative', answer: 'can' },
@@ -669,7 +668,7 @@ export const ep2Unit5 = {
         {
           type: 'fill-blank',
           template: "A: You can ask your neighbour to teach you. She's a drummer! B: That's a good ___!",
-          wordBank: ['idea', 'way', 'best', 'suppose'],
+          wordBank: ['idea', 'so', 'best', 'suppose'],
           answer: 'idea',
         },
         {
@@ -693,9 +692,9 @@ export const ep2Unit5 = {
         {
           type: 'matching',
           pairs: [
-            { left: 'Lena Hart (a fictional person) was a Canadian painter.', right: 'Life' },
-            { left: 'She first started painting when she was eleven.', right: 'Early career' },
-            { left: 'Lena eventually became one of the best-known artists in Canada.', right: 'Achievements' },
+            { left: 'Tom Fenwick grew up in a small fishing town in Wales.', right: 'Life' },
+            { left: "He first started taking photos with his grandfather's old camera.", right: 'Early career' },
+            { left: 'His photos eventually appeared in magazines all over the world.', right: 'Achievements' },
           ],
         },
         {
@@ -726,9 +725,9 @@ export const ep2Unit5 = {
             'She was born in a small village in 1920.',
             'She first started doing experiments at school.',
             'She had two brothers and a sister.',
-            'She eventually became one of the most famous scientists in her country.',
+            'Her research eventually changed the way doctors treat heart disease.',
           ],
-          answer: 'She eventually became one of the most famous scientists in her country.',
+          answer: 'Her research eventually changed the way doctors treat heart disease.',
         },
         {
           type: 'multiple-choice',
@@ -754,7 +753,7 @@ export const ep2Unit5 = {
         },
         {
           type: 'fill-blank',
-          template: 'Sofia ___ started writing poems when she was nine.',
+          template: 'Sofia ___ started playing the violin at the age of nine.',
           wordBank: ['first', 'because', 'but', 'so'],
           answer: 'first',
         },
@@ -772,9 +771,9 @@ export const ep2Unit5 = {
         },
         {
           type: 'fill-blank',
-          template: 'He eventually became one of ___ chefs in the country.',
-          wordBank: ['the most successful', 'more successful', 'the successfullest', 'most successful'],
-          answer: 'the most successful',
+          template: 'In 2015, his restaurant won a prize for ___ food in the city.',
+          wordBank: ['the best', 'better', 'the goodest', 'the most good'],
+          answer: 'the best',
         },
         {
           type: 'fill-blank',
